@@ -10,8 +10,9 @@ import { AdBanner } from '@/components/ads/AdBanner';
 import { DonationBanner } from '@/components/donations/DonationBanner';
 
 export const metadata: Metadata = {
-  title: 'Free URL Shortener – Create Custom Short Links with Analytics | ShortURL',
-  description: 'Free URL shortener with analytics. Create custom short links, track clicks, and manage your URLs with ease. 100% free, no hidden costs. Start shortening now!',
+  title: 'LinkForge – Create Magic Links with Analytics | Free URL Shortener',
+  description:
+    'Transform your URLs into powerful magic links with LinkForge. Free URL shortener with analytics, custom codes, and expiration settings. Create magic, track performance. 100% free!',
   alternates: {
     canonical: '/',
   },
@@ -21,19 +22,15 @@ export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      
+
       <main className="flex-1">
         {/* Hero Section with URL Shortener */}
         <Hero />
-        
+
         {/* Non-intrusive Ad Banner */}
         <section className="bg-muted/50 py-4">
           <div className="container mx-auto px-4">
-            <AdBanner 
-              slot="homepage-top"
-              className="max-w-4xl mx-auto"
-              lazy
-            />
+            <AdBanner slot="homepage-top" className="mx-auto max-w-4xl" lazy />
           </div>
         </section>
 
@@ -59,9 +56,9 @@ export default function HomePage() {
         {/* Bottom Ad Banner */}
         <section className="bg-muted/30 py-6">
           <div className="container mx-auto px-4">
-            <AdBanner 
+            <AdBanner
               slot="homepage-bottom"
-              className="max-w-3xl mx-auto"
+              className="mx-auto max-w-3xl"
               lazy
             />
           </div>
@@ -77,8 +74,9 @@ export default function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: 'Free URL Shortener',
-            description: 'Free URL shortener with analytics and custom short links',
+            name: 'LinkForge',
+            description:
+              'Transform URLs into powerful magic links with analytics and custom codes',
             url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
             applicationCategory: 'WebApplication',
             operatingSystem: 'Any',
@@ -88,16 +86,16 @@ export default function HomePage() {
               priceCurrency: 'USD',
             },
             featureList: [
-              'Free URL shortening',
-              'Custom short links',
-              'Click analytics',
-              'No registration required',
-              'Bulk URL shortening',
-              'API access',
+              'Magic link creation',
+              'Custom short codes',
+              'Advanced analytics',
+              'Expiration settings',
+              'QR code generation',
+              'Free forever',
             ],
             publisher: {
               '@type': 'Organization',
-              name: 'URL Shortener',
+              name: 'LinkForge',
             },
           }),
         }}
@@ -105,4 +103,3 @@ export default function HomePage() {
     </div>
   );
 }
-

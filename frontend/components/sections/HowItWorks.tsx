@@ -1,68 +1,79 @@
 import { Card } from '@/components/ui/Card';
+import { Sparkles, Star, Heart, Zap } from 'lucide-react';
 
 const steps = [
   {
-    step: '01',
-    title: 'Enter Your URL',
-    description: 'Paste your long URL into our shortening tool. Add a custom slug if you want.',
+    step: '✨',
+    title: 'Cast Your URL Spell',
+    description:
+      'Place your long URL into our magical forge. Add a custom enchantment code if you desire magical personalization.',
+    icon: Zap,
+    color: 'text-blue-500',
+    bgColor: 'bg-gradient-to-r from-blue-100 to-purple-100',
   },
   {
-    step: '02',
-    title: 'Get Short Link',
-    description: 'Click "Shorten URL" and get your custom short link instantly.',
+    step: '⚡',
+    title: 'Forge Magical Link',
+    description:
+      'Click "Forge Magical Link" and watch as your enchanted short link materializes instantly with supernatural speed.',
+    icon: Star,
+    color: 'text-purple-500',
+    bgColor: 'bg-gradient-to-r from-purple-100 to-pink-100',
   },
   {
-    step: '03',
-    title: 'Share & Track',
-    description: 'Share your short link anywhere and track clicks with detailed analytics.',
+    step: '🔮',
+    title: 'Share & Divine Analytics',
+    description:
+      'Share your magical link across realms and divine mystical insights with our enchanted analytics crystal ball.',
+    icon: Heart,
+    color: 'text-red-500',
+    bgColor: 'bg-gradient-to-r from-red-100 to-pink-100',
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
-            How it works
-          </h2>
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <div className="mb-4 flex items-center justify-center space-x-2">
+            <Sparkles className="h-6 w-6 animate-pulse text-blue-500" />
+            <h2 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
+              How the Magic Works
+            </h2>
+            <Star className="h-6 w-6 animate-bounce text-yellow-500" />
+          </div>
           <p className="text-lg text-gray-600">
-            Create short links in seconds with our simple 3-step process. 
-            No registration required to get started.
+            Create enchanted links in seconds with our simple 3-spell magical
+            process. No wizard registration required to begin your magical
+            journey.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
           {steps.map((step, index) => (
             <div key={index} className="text-center">
-              <Card className="p-6 h-full">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-xl font-bold mb-4">
+              <Card className="h-full border-0 bg-white/80 p-6 shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl">
+                <div
+                  className={`inline-flex h-16 w-16 items-center justify-center rounded-full ${step.bgColor} mb-4 text-2xl font-bold shadow-lg transition-transform duration-200 hover:scale-110`}
+                >
+                  <step.icon className={`h-8 w-8 ${step.color}`} />
+                </div>
+                <div className="mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent">
                   {step.step}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="mb-3 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-xl font-semibold text-transparent">
                   {step.title}
                 </h3>
-                <p className="text-gray-600">
-                  {step.description}
-                </p>
+                <p className="text-gray-600">{step.description}</p>
               </Card>
-              
-              {/* Arrow for desktop */}
+
+              {/* Magical Arrow for desktop */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-4 -translate-y-1/2">
-                  <svg 
-                    className="w-6 h-6 text-gray-400" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M9 5l7 7-7 7" 
-                    />
-                  </svg>
+                <div className="mb-8 mt-8 hidden justify-center md:flex">
+                  <div className="animate-pulse rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-2 text-white shadow-lg">
+                    <Zap className="h-5 w-5" />
+                  </div>
                 </div>
               )}
             </div>
@@ -72,4 +83,3 @@ export function HowItWorks() {
     </section>
   );
 }
-

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card } from '@/components/ui/Card';
-import { Copy, ExternalLink, Loader2, Check, X } from 'lucide-react';
+import { Copy, ExternalLink, Loader2, Check, X, Sparkles } from 'lucide-react';
 import { useUrlStore } from '@/store/url-store';
 import { isValidUrl, getShortUrl, copyToClipboard } from '@/lib/utils';
 import api from '@/lib/api';
@@ -137,11 +137,16 @@ export function DashboardUrlShortener({
   return (
     <div className="space-y-6">
       {/* URL Shortener Form */}
-      <Card className="p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-gray-900">
-            Create Short URL
-          </h3>
+      <Card className="border-0 bg-gradient-to-r from-white to-blue-50/50 p-6 shadow-2xl backdrop-blur-sm">
+        <div className="mb-6 flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="h-8 w-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 p-1.5">
+              <Sparkles className="h-full w-full text-white" />
+            </div>
+            <h3 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-semibold text-transparent">
+              Create Magic Link ✨
+            </h3>
+          </div>
           {onClose && (
             <Button variant="ghost" size="sm" onClick={handleClose}>
               <X className="h-4 w-4" />
@@ -153,9 +158,9 @@ export function DashboardUrlShortener({
           <div>
             <label
               htmlFor="longUrl"
-              className="mb-1 block text-sm font-medium text-gray-700"
+              className="mb-2 block text-sm font-semibold text-gray-700"
             >
-              URL to shorten
+              ✨ URL to shorten
             </label>
             <Input
               id="longUrl"
@@ -242,14 +247,21 @@ export function DashboardUrlShortener({
           </div>
 
           <div className="flex space-x-3">
-            <Button type="submit" className="flex-1" disabled={isLoading}>
+            <Button
+              type="submit"
+              className="flex-1 transform bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transition-all duration-200 hover:scale-105 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
+              disabled={isLoading}
+            >
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Shortening...
+                  Creating Magic...
                 </>
               ) : (
-                'Shorten URL'
+                <>
+                  <Sparkles className="mr-2 h-4 w-4" />
+                  Create Magic Link
+                </>
               )}
             </Button>
             {onClose && (

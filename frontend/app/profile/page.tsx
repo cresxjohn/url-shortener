@@ -11,7 +11,19 @@ import {
   CardDescription,
   CardContent,
 } from '@/components/ui/Card';
-import { User, Mail, Calendar, Loader2, LogOut } from 'lucide-react';
+import {
+  User,
+  Mail,
+  Calendar,
+  Loader2,
+  LogOut,
+  Zap,
+  Sparkles,
+  Heart,
+  Shield,
+  Star,
+  BarChart3,
+} from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { formatDate } from '@/lib/utils';
 import api from '@/lib/api';
@@ -102,38 +114,54 @@ export default function ProfilePage() {
 
   if (!isHydrated || !isAuthenticated || !user) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-purple-50">
         <div className="text-center">
-          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-primary"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <div className="mb-4 flex items-center justify-center space-x-2">
+            <Sparkles className="h-8 w-8 animate-bounce text-blue-500" />
+            <Zap className="h-10 w-10 animate-spin text-purple-600" />
+            <Heart className="h-8 w-8 animate-pulse text-red-500" />
+          </div>
+          <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-lg font-medium text-transparent">
+            Awakening your magical profile...
+          </p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="border-b bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      {/* Enhanced Magical Header */}
+      <div className="border-b bg-white/80 shadow-sm backdrop-blur-md">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
-                Profile Settings
-              </h1>
-              <p className="text-gray-600">Manage your account information</p>
+              <div className="mb-2 flex items-center space-x-3">
+                <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-2 shadow-lg">
+                  <User className="h-full w-full text-white" />
+                </div>
+                <h1 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
+                  Wizard Profile Settings
+                </h1>
+                <Sparkles className="h-6 w-6 animate-bounce text-purple-500" />
+              </div>
+              <p className="ml-13 text-gray-600">
+                Manage your magical account enchantments
+              </p>
             </div>
             <div className="flex items-center space-x-3">
               <Button
                 variant="outline"
                 onClick={() => router.push('/dashboard')}
+                className="border-gray-300 transition-all duration-200 hover:border-blue-500 hover:text-blue-600"
               >
+                <BarChart3 className="mr-2 h-4 w-4" />
                 Back to Dashboard
               </Button>
               <Button
                 variant="outline"
                 onClick={logout}
-                className="text-red-600 hover:border-red-300 hover:text-red-700"
+                className="text-red-600 transition-all duration-200 hover:border-red-300 hover:bg-red-50 hover:text-red-700"
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout
@@ -144,51 +172,59 @@ export default function ProfilePage() {
       </div>
 
       <div className="container mx-auto max-w-2xl px-4 py-8">
-        {/* Profile Information */}
-        <Card className="mb-8">
-          <CardHeader>
+        {/* Magical Profile Information */}
+        <Card className="mb-8 border-0 bg-white/80 shadow-xl backdrop-blur-sm">
+          <CardHeader className="border-b bg-gradient-to-r from-blue-50 to-purple-50">
             <CardTitle className="flex items-center">
-              <User className="mr-2 h-5 w-5" />
-              Profile Information
+              <div className="mr-3 h-8 w-8 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 p-1.5 shadow-md">
+                <User className="h-full w-full text-white" />
+              </div>
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Wizard Profile Information
+              </span>
+              <Sparkles className="ml-2 h-5 w-5 text-purple-500" />
             </CardTitle>
-            <CardDescription>Update your personal information</CardDescription>
+            <CardDescription>
+              Update your magical enchantment details
+            </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-6">
             <form onSubmit={handleUpdateProfile} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
-                  className="mb-1 block text-sm font-medium text-gray-700"
+                  className="mb-2 block text-sm font-medium text-gray-700"
                 >
-                  Full Name
+                  🧙 Wizard Name
                 </label>
                 <Input
                   id="name"
                   type="text"
-                  placeholder="Enter your full name"
+                  placeholder="Enter your magical wizard name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   disabled={isUpdating}
+                  className="border-gray-200 bg-gradient-to-r from-blue-50/50 to-purple-50/50 transition-all duration-200 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="email"
-                  className="mb-1 block text-sm font-medium text-gray-700"
+                  className="mb-2 block text-sm font-medium text-gray-700"
                 >
-                  Email Address
+                  ✉️ Magical Contact Scroll
                 </label>
                 <Input
                   id="email"
                   type="email"
                   value={user.email}
                   disabled
-                  className="bg-gray-50"
+                  className="border-gray-200 bg-gradient-to-r from-gray-50 to-blue-50"
                 />
-                <p className="mt-1 text-xs text-gray-500">
-                  Email cannot be changed. Contact support if you need to update
-                  your email.
+                <p className="mt-2 rounded-lg border bg-blue-50 p-2 text-xs text-gray-500">
+                  🔒 Your magical email scroll is protected and cannot be
+                  changed. Contact our wizards if you need assistance.
                 </p>
               </div>
 
@@ -209,73 +245,117 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              <Button type="submit" disabled={isUpdating} className="w-full">
+              <Button
+                type="submit"
+                disabled={isUpdating}
+                className="w-full transform bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transition-all duration-200 hover:scale-[1.02] hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
+              >
                 {isUpdating ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Updating...
+                    Updating magical profile...
                   </>
                 ) : (
-                  'Update Profile'
+                  <>
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    Update Wizard Profile
+                  </>
                 )}
               </Button>
             </form>
           </CardContent>
         </Card>
 
-        {/* Account Statistics */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Account Statistics</CardTitle>
-            <CardDescription>Your account usage overview</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-lg bg-gray-50 p-4 text-center">
-                <p className="text-2xl font-bold text-gray-900">-</p>
-                <p className="text-sm text-gray-600">Total URLs</p>
+        {/* Magical Account Statistics */}
+        <Card className="mb-8 border-0 bg-white/80 shadow-xl backdrop-blur-sm">
+          <CardHeader className="border-b bg-gradient-to-r from-green-50 to-blue-50">
+            <CardTitle className="flex items-center">
+              <div className="mr-3 h-8 w-8 rounded-lg bg-gradient-to-r from-green-500 to-blue-500 p-1.5 shadow-md">
+                <BarChart3 className="h-full w-full text-white" />
               </div>
-              <div className="rounded-lg bg-gray-50 p-4 text-center">
-                <p className="text-2xl font-bold text-gray-900">-</p>
-                <p className="text-sm text-gray-600">Total Clicks</p>
+              <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                Magical Statistics
+              </span>
+              <Star className="ml-2 h-5 w-5 animate-pulse text-yellow-500" />
+            </CardTitle>
+            <CardDescription>
+              Your enchantment performance overview
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="p-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-lg border border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 p-4 text-center shadow-sm">
+                <div className="mb-2 flex items-center justify-center">
+                  <Zap className="h-6 w-6 text-blue-600" />
+                </div>
+                <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
+                  ∞
+                </p>
+                <p className="text-sm text-gray-600">Magic Links Created</p>
+              </div>
+              <div className="rounded-lg border border-green-200 bg-gradient-to-r from-green-50 to-blue-50 p-4 text-center shadow-sm">
+                <div className="mb-2 flex items-center justify-center">
+                  <Heart className="h-6 w-6 text-green-600" />
+                </div>
+                <p className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-2xl font-bold text-transparent">
+                  ∞
+                </p>
+                <p className="text-sm text-gray-600">Magical Clicks</p>
               </div>
             </div>
-            <p className="mt-4 text-xs text-gray-500">
-              Visit your dashboard for detailed analytics
-            </p>
+            <div className="mt-4 rounded-lg border bg-gradient-to-r from-blue-50 to-purple-50 p-3">
+              <p className="text-center text-xs text-gray-600">
+                ✨ Visit your dashboard for detailed magical analytics and
+                enchantment insights
+              </p>
+            </div>
           </CardContent>
         </Card>
 
-        {/* Danger Zone */}
-        <Card className="border-red-200">
-          <CardHeader>
-            <CardTitle className="text-red-900">Danger Zone</CardTitle>
+        {/* Forbidden Magic Zone */}
+        <Card className="border-red-200 bg-gradient-to-r from-red-50 to-orange-50 shadow-xl">
+          <CardHeader className="border-b border-red-200 bg-gradient-to-r from-red-100 to-orange-100">
+            <CardTitle className="flex items-center text-red-900">
+              <div className="mr-3 h-8 w-8 rounded-lg bg-gradient-to-r from-red-500 to-orange-500 p-1.5 shadow-md">
+                <Shield className="h-full w-full text-white" />
+              </div>
+              <span className="bg-gradient-to-r from-red-700 to-orange-700 bg-clip-text text-transparent">
+                Forbidden Magic Zone
+              </span>
+              <span className="ml-2 text-red-500">⚠️</span>
+            </CardTitle>
             <CardDescription className="text-red-600">
-              Irreversible and destructive actions
+              Dark spells with irreversible and destructive consequences
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-6">
             <div className="space-y-4">
-              <div>
-                <h4 className="mb-2 text-sm font-medium text-gray-900">
-                  Delete Account
+              <div className="rounded-lg border border-red-200 bg-white/80 p-4">
+                <h4 className="mb-2 flex items-center text-sm font-medium text-red-900">
+                  <span className="mr-2">🗑️</span>
+                  Banish Wizard Account
                 </h4>
-                <p className="mb-4 text-sm text-gray-600">
-                  Permanently delete your account and all associated data. This
-                  action cannot be undone.
+                <p className="mb-4 text-sm text-red-700">
+                  Permanently banish your wizard account and destroy all magical
+                  links and enchantment data. This dark magic cannot be undone -
+                  your digital soul will be lost forever.
                 </p>
                 <Button
                   variant="destructive"
                   onClick={handleDeleteAccount}
                   disabled={isLoading}
+                  className="bg-gradient-to-r from-red-600 to-orange-600 shadow-lg hover:from-red-700 hover:to-orange-700"
                 >
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Deleting...
+                      Casting banishment spell...
                     </>
                   ) : (
-                    'Delete Account'
+                    <>
+                      <Shield className="mr-2 h-4 w-4" />
+                      Banish Wizard Account
+                    </>
                   )}
                 </Button>
               </div>

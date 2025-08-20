@@ -24,7 +24,9 @@ export function AdBanner({ slot, className, lazy = false }: AdBannerProps) {
     // Google AdSense integration
     try {
       if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+          {}
+        );
       }
     } catch (error) {
       console.error('AdSense error:', error);
@@ -41,7 +43,7 @@ export function AdBanner({ slot, className, lazy = false }: AdBannerProps) {
     <div
       ref={setRefs}
       className={cn(
-        'flex items-center justify-center min-h-[100px] bg-gray-50 border border-gray-200 rounded-lg',
+        'flex min-h-[100px] items-center justify-center rounded-lg border border-gray-200 bg-gray-50',
         className
       )}
     >
@@ -54,11 +56,11 @@ export function AdBanner({ slot, className, lazy = false }: AdBannerProps) {
         data-ad-format="auto"
         data-full-width-responsive="true"
       />
-      
+
       {/* Fallback content for development/testing */}
       {process.env.NODE_ENV === 'development' && (
-        <div className="text-center p-4">
-          <p className="text-sm text-gray-500 mb-2">Ad Space ({slot})</p>
+        <div className="p-4 text-center">
+          <p className="mb-2 text-sm text-gray-500">Ad Space ({slot})</p>
           <p className="text-xs text-gray-400">
             This is where ads will appear in production
           </p>
@@ -67,4 +69,3 @@ export function AdBanner({ slot, className, lazy = false }: AdBannerProps) {
     </div>
   );
 }
-

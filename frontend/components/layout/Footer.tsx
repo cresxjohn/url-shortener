@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { LinkIcon, Twitter, Github, Mail } from 'lucide-react';
+import { Zap, Twitter, Github } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -8,116 +8,95 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="mb-4 flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <LinkIcon className="h-5 w-5 text-primary-foreground" />
+            <Link href="/" className="mb-4 flex items-center space-x-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-2 shadow-lg">
+                <Zap className="h-full w-full text-white" />
               </div>
-              <span className="text-xl font-bold">ShortURL</span>
+              <div className="flex flex-col">
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-bold text-transparent">
+                  LinkForge
+                </span>
+                <span className="-mt-1 text-xs text-gray-500">Smart Links</span>
+              </div>
             </Link>
             <p className="mb-4 max-w-md text-gray-600">
-              Free URL shortener with analytics. Create custom short links,
-              track clicks, and manage your URLs with ease. 100% free, no hidden
-              costs.
+              Free URL shortener with advanced analytics. Create custom short
+              links, track detailed clicks, and manage your URLs with ease. 100%
+              free forever, no hidden costs.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://twitter.com/shorturl"
+                href="https://twitter.com/linkforge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 transition-colors hover:text-gray-600"
+                className="text-gray-400 transition-colors hover:text-blue-500"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="https://github.com/shorturl"
+                href="https://github.com/linkforge"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 transition-colors hover:text-gray-600"
+                className="text-gray-400 transition-colors hover:text-purple-500"
               >
                 <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:support@shorturl.com"
-                className="text-gray-400 transition-colors hover:text-gray-600"
-              >
-                <Mail className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Product */}
+          {/* Quick Links */}
           <div>
-            <h3 className="mb-4 font-semibold text-gray-900">Product</h3>
+            <h3 className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text font-semibold text-transparent">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/features"
-                  className="text-gray-600 transition-colors hover:text-gray-900"
+                  href="/login"
+                  className="text-gray-600 transition-colors hover:text-blue-600"
                 >
-                  Features
+                  Sign In
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/api"
-                  className="text-gray-600 transition-colors hover:text-gray-900"
+                  href="/signup"
+                  className="text-gray-600 transition-colors hover:text-purple-600"
                 >
-                  API
+                  Get Started
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/integrations"
-                  className="text-gray-600 transition-colors hover:text-gray-900"
+                  href="/dashboard"
+                  className="text-gray-600 transition-colors hover:text-blue-600"
                 >
-                  Integrations
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-gray-600 transition-colors hover:text-gray-900"
-                >
-                  Blog
+                  Dashboard
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Support */}
+          {/* Legal */}
           <div>
-            <h3 className="mb-4 font-semibold text-gray-900">Support</h3>
+            <h3 className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text font-semibold text-transparent">
+              Legal
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/help"
-                  className="text-gray-600 transition-colors hover:text-gray-900"
+                  href="/privacy"
+                  className="text-gray-600 transition-colors hover:text-blue-600"
                 >
-                  Help Center
+                  Privacy Policy
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/contact"
-                  className="text-gray-600 transition-colors hover:text-gray-900"
+                  href="/terms"
+                  className="text-gray-600 transition-colors hover:text-purple-600"
                 >
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/status"
-                  className="text-gray-600 transition-colors hover:text-gray-900"
-                >
-                  Status
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-gray-600 transition-colors hover:text-gray-900"
-                >
-                  Blog
+                  Terms of Service
                 </Link>
               </li>
             </ul>
@@ -126,26 +105,20 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between border-t pt-8 md:flex-row">
           <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} ShortURL. All rights reserved.
+            © {new Date().getFullYear()} LinkForge. All rights reserved.
           </p>
           <div className="mt-4 flex space-x-6 md:mt-0">
             <Link
               href="/privacy"
-              className="text-sm text-gray-600 transition-colors hover:text-gray-900"
+              className="text-sm text-gray-600 transition-colors hover:text-blue-600"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms"
-              className="text-sm text-gray-600 transition-colors hover:text-gray-900"
+              className="text-sm text-gray-600 transition-colors hover:text-purple-600"
             >
               Terms of Service
-            </Link>
-            <Link
-              href="/cookies"
-              className="text-sm text-gray-600 transition-colors hover:text-gray-900"
-            >
-              Cookie Policy
             </Link>
           </div>
         </div>
