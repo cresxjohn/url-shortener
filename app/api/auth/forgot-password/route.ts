@@ -3,10 +3,44 @@ import crypto from 'crypto';
 import connectDB from '@/lib/mongodb';
 import User from '@/lib/models/User';
 import { sendPasswordResetEmail } from '@/lib/services/email';
+import { rateLimiters } from '@/lib/middleware/rateLimit';
+import { SecurityLogger } from '@/lib/security/auditLog';
 
 export async function POST(request: NextRequest) {
+  const ipAddress =
+    request.headers.get('x-forwarded-for')?.split(',')[0] ||
+    request.headers.get('x-real-ip') ||
+    'unknown';
+  const userAgent = request.headers.get('user-agent') || 'unknown';
+
   try {
     await connectDB();
+
+    // Apply strict rate limiting for password reset
+    const rateLimit = rateLimiters.passwordReset(request);
+    if (!rateLimit.allowed) {
+      await SecurityLogger.logRateLimitViolation(
+        'POST /api/auth/forgot-password',
+        {
+          ipAddress,
+          userAgent,
+          limit: 3,
+          current: rateLimit.remaining,
+        }
+      );
+
+      return NextResponse.json(
+        {
+          message: 'Too many password reset attempts. Please try again later.',
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': rateLimit.retryAfter?.toString() || '3600',
+          },
+        }
+      );
+    }
 
     const { email } = await request.json();
 
