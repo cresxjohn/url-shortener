@@ -25,10 +25,10 @@ export function Hero() {
       id="hero"
       className="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20 lg:py-32"
     >
-      {/* Magical Background Pattern */}
+      {/* Background Pattern */}
       <div className="bg-grid-slate-100 absolute inset-0 opacity-40 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
 
-      {/* Floating magical elements */}
+      {/* Floating elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute left-10 top-20 animate-bounce">
           <Sparkles className="h-6 w-6 text-blue-400 opacity-60" />

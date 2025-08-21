@@ -66,7 +66,7 @@ export function HowItWorks() {
                 <p className="text-gray-600">{step.description}</p>
               </Card>
 
-              {/* Magical Arrow for desktop */}
+              {/* Arrow for desktop */}
               {index < steps.length - 1 && (
                 <div className="mb-8 mt-8 hidden justify-center md:flex">
                   <div className="animate-pulse rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-2 text-white shadow-lg">

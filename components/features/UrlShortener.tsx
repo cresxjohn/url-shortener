@@ -65,7 +65,7 @@ export function UrlShortener() {
     e.preventDefault();
 
     if (!longUrl.trim()) {
-      toast.error('✨ Please enter a URL to enchant with magic');
+      toast.error('Please enter a URL to shorten');
       return;
     }
 
@@ -109,10 +109,10 @@ export function UrlShortener() {
       setExpirationOption('never');
       setCustomExpirationDate('');
 
-      toast.success('🎉 Magical link forged successfully! ✨');
+      toast.success('🎉 Short link created successfully!');
     } catch (error: any) {
       const message =
-        error.response?.data?.message || 'Failed to cast URL magic';
+        error.response?.data?.message || 'Failed to create short link';
       toast.error(`🔥 ${message}`);
       setError(message);
     } finally {
@@ -124,12 +124,12 @@ export function UrlShortener() {
     try {
       await copyToClipboard(url);
       setCopiedUrl(url);
-      toast.success('📋 Magical link copied to your spellbook! ✨');
+      toast.success('📋 Link copied to clipboard!');
 
       // Reset copied state after 2 seconds
       setTimeout(() => setCopiedUrl(null), 2000);
     } catch (error) {
-      toast.error('⚠️ Failed to copy magical link');
+      toast.error('⚠️ Failed to copy link');
     }
   };
 
@@ -137,9 +137,9 @@ export function UrlShortener() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      {/* Magical URL Shortener Form */}
+      {/* URL Shortener Form */}
       <Card className="border-0 bg-white/80 shadow-2xl backdrop-blur-sm">
-        {/* Magical Header */}
+        {/* Header */}
         <div className="rounded-t-lg border-b bg-gradient-to-r from-blue-50 to-purple-50 p-6">
           <div className="text-center">
             <div className="mb-3 flex items-center justify-center space-x-2">
@@ -181,19 +181,19 @@ export function UrlShortener() {
               className="mb-2 flex items-center text-sm font-medium text-gray-700"
             >
               <Star className="mr-1 h-4 w-4 text-purple-500" />
-              Custom Magic Code (Optional)
+              Custom Short Code (Optional)
             </label>
             <Input
               id="customSlug"
               type="text"
-              placeholder="Custom magic code (optional) - e.g., my-awesome-spell"
+              placeholder="Custom short code (optional) - e.g., my-awesome-link"
               value={customSlug}
               onChange={(e) => setCustomSlug(e.target.value)}
               className="border-gray-200 bg-gradient-to-r from-purple-50/50 to-pink-50/50 text-base transition-all duration-200 focus:border-purple-500 focus:ring-purple-500"
               disabled={isLoading}
             />
             <p className="mt-1 text-xs text-gray-500">
-              ✨ Leave empty for auto-generated magical short code
+              Leave empty for auto-generated short code
             </p>
           </div>
 
@@ -203,7 +203,7 @@ export function UrlShortener() {
               className="mb-2 flex items-center text-sm font-medium text-gray-700"
             >
               <Heart className="mr-1 h-4 w-4 text-red-500" />
-              Magic Link Lifetime
+              Link Expiration
             </label>
             <select
               id="expiration"
@@ -212,13 +212,13 @@ export function UrlShortener() {
               className="w-full rounded-md border border-gray-300 bg-gradient-to-r from-green-50/50 to-blue-50/50 px-3 py-2 text-base shadow-sm transition-all duration-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500"
               disabled={isLoading}
             >
-              <option value="never">✨ Eternal magic (never expires)</option>
-              <option value="1week">⏰ 1 week enchantment</option>
-              <option value="1month">🌙 1 month spell</option>
-              <option value="3months">🌟 3 months charm</option>
-              <option value="6months">💫 6 months blessing</option>
-              <option value="1year">🔮 1 year powerful magic</option>
-              <option value="custom">⚡ Custom magical duration</option>
+              <option value="never">Never expires</option>
+              <option value="1week">1 week</option>
+              <option value="1month">1 month</option>
+              <option value="3months">3 months</option>
+              <option value="6months">6 months</option>
+              <option value="1year">1 year</option>
+              <option value="custom">Custom duration</option>
             </select>
 
             {expirationOption === 'custom' && (
@@ -235,20 +235,19 @@ export function UrlShortener() {
             )}
 
             <p className="mt-1 text-xs text-gray-500">
-              {expirationOption === 'never' &&
-                '✨ Your magical link will cast spells indefinitely'}
+              {expirationOption === 'never' && 'Your link will never expire'}
               {expirationOption === '1week' &&
-                '⏰ Your enchantment will fade after 1 week'}
+                'Your link will expire after 1 week'}
               {expirationOption === '1month' &&
-                '🌙 Your spell will weaken after 1 month'}
+                'Your link will expire after 1 month'}
               {expirationOption === '3months' &&
-                '🌟 Your charm will last for 3 magical months'}
+                'Your link will expire after 3 months'}
               {expirationOption === '6months' &&
-                '💫 Your blessing will endure for 6 months'}
+                'Your link will expire after 6 months'}
               {expirationOption === '1year' &&
-                '🔮 Your powerful magic will last for 1 year'}
+                'Your link will expire after 1 year'}
               {expirationOption === 'custom' &&
-                '⚡ Choose a specific moment for your magic to end'}
+                'Choose a specific expiration date and time'}
             </p>
           </div>
 
@@ -273,7 +272,7 @@ export function UrlShortener() {
         </form>
       </Card>
 
-      {/* Magical Result Display */}
+      {/* Result Display */}
       {recentUrl && (
         <Card className="mt-6 border-0 border-green-200 bg-gradient-to-r from-green-50 to-blue-50 p-6 shadow-xl">
           <div className="text-center">
@@ -286,7 +285,7 @@ export function UrlShortener() {
             </div>
 
             <div className="space-y-3">
-              {/* Magical Short URL Display */}
+              {/* Short URL Display */}
               <div className="flex items-center gap-2 rounded-lg border-2 border-blue-200 bg-white/80 p-3 shadow-md backdrop-blur-sm">
                 <div className="flex-1 text-left">
                   <div className="mb-1 flex items-center gap-1">

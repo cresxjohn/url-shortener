@@ -128,9 +128,9 @@ export default function AnalyticsPage({ params }: { params: { id: string } }) {
             <div className="absolute inset-0 mx-auto h-16 w-16 animate-spin rounded-full border-4 border-blue-200 border-t-blue-600"></div>
           </div>
           <h2 className="mt-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-semibold text-transparent">
-            Loading analytics magic...
+            Loading analytics...
           </h2>
-          <p className="mt-2 text-gray-600">Crunching the numbers ✨</p>
+          <p className="mt-2 text-gray-600">Crunching the numbers...</p>
         </div>
       </div>
     );

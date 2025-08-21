@@ -104,7 +104,7 @@ export default async function HomePage() {
             '@type': 'WebApplication',
             name: 'DV4 Links',
             description:
-              'Transform URLs into powerful magic links with analytics and custom codes',
+              'Free URL shortener with built-in analytics and custom codes',
             url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
             applicationCategory: 'WebApplication',
             operatingSystem: 'Any',
