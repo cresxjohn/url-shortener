@@ -266,7 +266,7 @@ export default function DashboardPage() {
               >
                 <Sparkles className="mr-1 h-4 w-4 sm:mr-2" />
                 <span className="hidden sm:inline">
-                  {showUrlShortener ? 'Hide Magic' : 'Create Magic Link'}
+                  {showUrlShortener ? 'Hide Magic' : 'Create Short Link'}
                 </span>
                 <span className="sm:hidden">Create</span>
               </Button>
