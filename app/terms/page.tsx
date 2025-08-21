@@ -5,9 +5,9 @@ import { Card } from '@/components/ui/Card';
 import { ArrowLeft, Zap, Shield, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | LinkForge',
+  title: 'Terms of Service | DV4 Links',
   description:
-    'Terms of Service for LinkForge URL shortening platform. Learn about our service terms, user responsibilities, and legal requirements.',
+    'Terms of Service for DV4 Links URL shortening platform. Learn about our service terms, user responsibilities, and legal requirements.',
   alternates: {
     canonical: '/terms',
   },
@@ -27,7 +27,7 @@ export default function TermsPage() {
                 </div>
                 <div className="flex flex-col">
                   <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-bold text-transparent">
-                    LinkForge
+                    DV4 Links
                   </span>
                   <span className="-mt-1 text-xs text-gray-500">
                     Smart Links
@@ -79,7 +79,7 @@ export default function TermsPage() {
                   1. Acceptance of Terms
                 </h2>
                 <p className="leading-relaxed text-gray-700">
-                  By accessing and using LinkForge ("Service"), you accept and
+                  By accessing and using DV4 Links ("Service"), you accept and
                   agree to be bound by the terms and provision of this
                   agreement. If you do not agree to abide by the above, please
                   do not use this service.
@@ -92,7 +92,7 @@ export default function TermsPage() {
                   2. Description of Service
                 </h2>
                 <p className="mb-4 leading-relaxed text-gray-700">
-                  LinkForge is a URL shortening service that allows users to
+                  DV4 Links is a URL shortening service that allows users to
                   create shortened versions of long URLs. Our service includes:
                 </p>
                 <ul className="list-inside list-disc space-y-2 text-gray-700">
@@ -156,7 +156,7 @@ export default function TermsPage() {
                   5. Service Availability
                 </h2>
                 <p className="leading-relaxed text-gray-700">
-                  While we strive to maintain 99.9% uptime, LinkForge is
+                  While we strive to maintain 99.9% uptime, DV4 Links is
                   provided "as is" and we do not guarantee uninterrupted
                   service. We reserve the right to modify, suspend, or
                   discontinue the service at any time with reasonable notice.
@@ -187,7 +187,7 @@ export default function TermsPage() {
                   7. Limitation of Liability
                 </h2>
                 <p className="leading-relaxed text-gray-700">
-                  LinkForge shall not be liable for any indirect, incidental,
+                  DV4 Links shall not be liable for any indirect, incidental,
                   special, or consequential damages resulting from the use or
                   inability to use the service, even if we have been advised of
                   the possibility of such damages.
@@ -228,7 +228,7 @@ export default function TermsPage() {
                 Ready to get started?
               </h3>
               <p className="mb-4 text-gray-600">
-                Create your free LinkForge account and start shortening URLs
+                Create your free DV4 Links account and start shortening URLs
                 today.
               </p>
               <div className="flex flex-col justify-center gap-3 sm:flex-row">

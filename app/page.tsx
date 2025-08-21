@@ -10,9 +10,9 @@ import { AdBanner } from '@/components/ads/AdBanner';
 import { DonationBanner } from '@/components/donations/DonationBanner';
 
 export const metadata: Metadata = {
-  title: 'LinkForge – Create Magic Links with Analytics | Free URL Shortener',
+  title: 'DV4 Links – Create Magic Links with Analytics | Free URL Shortener',
   description:
-    'Transform your URLs into powerful magic links with LinkForge. Free URL shortener with analytics, custom codes, and expiration settings. Create magic, track performance. 100% free!',
+    'Transform your URLs into powerful magic links with DV4 Links. Free URL shortener with analytics, custom codes, and expiration settings. Create magic, track performance. 100% free!',
   alternates: {
     canonical: '/',
   },
@@ -28,11 +28,11 @@ export default function HomePage() {
         <Hero />
 
         {/* Non-intrusive Ad Banner */}
-        <section className="bg-muted/50 py-4">
+        {/* <section className="bg-muted/50 py-4">
           <div className="container mx-auto px-4">
             <AdBanner slot="homepage-top" className="mx-auto max-w-4xl" lazy />
           </div>
-        </section>
+        </section> */}
 
         {/* Features Section */}
         <Features />
@@ -44,17 +44,17 @@ export default function HomePage() {
         <Stats />
 
         {/* Donation Banner */}
-        <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
+        {/* <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
           <div className="container mx-auto px-4">
             <DonationBanner />
           </div>
-        </section>
+        </section> */}
 
         {/* FAQ Section */}
         <FAQ />
 
         {/* Bottom Ad Banner */}
-        <section className="bg-muted/30 py-6">
+        {/* <section className="bg-muted/30 py-6">
           <div className="container mx-auto px-4">
             <AdBanner
               slot="homepage-bottom"
@@ -62,7 +62,7 @@ export default function HomePage() {
               lazy
             />
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />
@@ -74,7 +74,7 @@ export default function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: 'LinkForge',
+            name: 'DV4 Links',
             description:
               'Transform URLs into powerful magic links with analytics and custom codes',
             url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
@@ -95,7 +95,7 @@ export default function HomePage() {
             ],
             publisher: {
               '@type': 'Organization',
-              name: 'LinkForge',
+              name: 'DV4 Links',
             },
           }),
         }}

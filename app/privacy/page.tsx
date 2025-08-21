@@ -5,9 +5,9 @@ import { Card } from '@/components/ui/Card';
 import { ArrowLeft, Zap, Shield, Lock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | LinkForge',
+  title: 'Privacy Policy | DV4 Links',
   description:
-    'Privacy Policy for LinkForge URL shortening platform. Learn how we collect, use, and protect your personal information.',
+    'Privacy Policy for DV4 Links URL shortening platform. Learn how we collect, use, and protect your personal information.',
   alternates: {
     canonical: '/privacy',
   },
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
                 </div>
                 <div className="flex flex-col">
                   <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-bold text-transparent">
-                    LinkForge
+                    DV4 Links
                   </span>
                   <span className="-mt-1 text-xs text-gray-500">
                     Smart Links
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
                   Introduction
                 </h2>
                 <p className="leading-relaxed text-gray-700">
-                  LinkForge ("we," "our," or "us") is committed to protecting
+                  DV4 Links ("we," "our," or "us") is committed to protecting
                   your privacy. This Privacy Policy explains how we collect,
                   use, disclose, and safeguard your information when you use our
                   URL shortening service.
@@ -310,7 +310,7 @@ export default function PrivacyPage() {
                 Your privacy is protected
               </h3>
               <p className="mb-4 text-gray-600">
-                Join thousands of users who trust LinkForge with their URL
+                Join thousands of users who trust DV4 Links with their URL
                 shortening needs.
               </p>
               <div className="flex flex-col justify-center gap-3 sm:flex-row">

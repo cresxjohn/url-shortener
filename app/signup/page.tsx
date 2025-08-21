@@ -75,7 +75,7 @@ export default function SignupPage() {
       const { user, accessToken } = response.data;
       login(user, accessToken);
 
-      toast.success('Account created successfully! Welcome to LinkForge!');
+      toast.success('Account created successfully! Welcome to DV4 Links!');
       router.push('/dashboard');
     } catch (error: any) {
       const message = error.response?.data?.message || 'Signup failed';
@@ -96,7 +96,7 @@ export default function SignupPage() {
 
   return (
     <AuthLayout
-      title="Join LinkForge!"
+      title="Join DV4 Links!"
       subtitle="Get Started"
       bottomText="Already have an account?"
       bottomLinkText="Sign in here"

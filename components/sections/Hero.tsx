@@ -21,7 +21,10 @@ export function Hero() {
   const { isAuthenticated, user } = useAuthStore();
 
   return (
-    <section className="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20 lg:py-32">
+    <section
+      id="hero"
+      className="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20 lg:py-32"
+    >
       {/* Magical Background Pattern */}
       <div className="bg-grid-slate-100 absolute inset-0 opacity-40 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
 
@@ -48,7 +51,7 @@ export function Hero() {
           </div>
 
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            LinkForge –{' '}
+            DV4 Links –{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Create Smart Links
             </span>{' '}
