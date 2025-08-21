@@ -172,7 +172,9 @@ export class IPLimitsManager {
   private static cleanupExpired(): void {
     const now = Date.now();
 
-    for (const [ip, limit] of this.ipLimits.entries()) {
+    // Convert to array to avoid iterator issues
+    const entries = Array.from(this.ipLimits.entries());
+    for (const [ip, limit] of entries) {
       if (now > limit.resetTime) {
         this.ipLimits.delete(ip);
       }

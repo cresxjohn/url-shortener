@@ -102,7 +102,9 @@ function getClientIP(request: NextRequest): string {
 function cleanupExpired(): void {
   const now = Date.now();
 
-  for (const [key, limit] of rateLimitStore.entries()) {
+  // Convert to array to avoid iterator issues
+  const entries = Array.from(rateLimitStore.entries());
+  for (const [key, limit] of entries) {
     if (now > limit.resetTime) {
       rateLimitStore.delete(key);
     }

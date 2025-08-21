@@ -266,7 +266,10 @@ export class SecurityLogger {
     if (filters?.since) query.timestamp = { $gte: filters.since };
     if (filters?.tags?.length) query.tags = { $in: filters.tags };
 
-    return AuditLog.find(query).sort({ timestamp: -1 }).limit(limit).lean();
+    return AuditLog.find(query)
+      .sort({ timestamp: -1 })
+      .limit(limit)
+      .lean() as unknown as Promise<IAuditLog[]>;
   }
 
   /**
