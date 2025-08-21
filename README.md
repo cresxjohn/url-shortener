@@ -1,6 +1,6 @@
 # 🔗 Free URL Shortener
 
-A modern, SEO-optimized URL shortening service built with Next.js and NestJS. Create custom short links with detailed analytics, all for free!
+A modern, SEO-optimized URL shortening service built with Next.js and MongoDB. Create custom short links with detailed analytics, all for free!
 
 ## ✨ Features
 
@@ -16,38 +16,36 @@ A modern, SEO-optimized URL shortening service built with Next.js and NestJS. Cr
 
 ## 🛠️ Tech Stack
 
-### Frontend
+### Full-Stack Framework
 
-- **Next.js 14** - React framework with App Router
+- **Next.js 14** - React framework with App Router and API Routes
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first styling
 - **Zustand + Immer** - State management
 - **React Hook Form + Zod** - Form handling and validation
 
-### Backend
+### Backend (API Routes)
 
-- **NestJS** - Node.js framework
-- **Prisma** - Database ORM
-- **PostgreSQL** - Primary database
-- **Redis** - Caching and sessions
-- **JWT** - Authentication
-- **Passport** - Authentication strategies
+- **Next.js API Routes** - Server-side API endpoints
+- **Mongoose** - MongoDB object modeling
+- **MongoDB** - NoSQL database
+- **JWT** - Authentication tokens
+- **bcryptjs** - Password hashing
+- **UA Parser** - User agent analysis
 
 ### Infrastructure
 
-- **Docker** - Containerization
-- **Docker Compose** - Multi-service orchestration
-- **Vercel** (recommended) - Frontend hosting
-- **Railway/Render** (recommended) - Backend hosting
+- **MongoDB** - Database hosting (MongoDB Atlas recommended)
+- **Vercel** (recommended) - Full-stack hosting
+- **Docker** - Containerization (optional)
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
 - Node.js 18+
-- PostgreSQL 14+
-- Redis 6+
-- Docker (optional)
+- MongoDB 5+ (local or MongoDB Atlas)
+- pnpm package manager
 
 ### Local Development
 
@@ -58,85 +56,100 @@ A modern, SEO-optimized URL shortening service built with Next.js and NestJS. Cr
    cd url-shortener
    ```
 
-2. **Backend Setup**
+2. **Install dependencies**
 
    ```bash
-   cd backend
    pnpm install
-
-   # Copy environment variables
-   cp env.example .env
-   # Edit .env with your database and JWT secrets
-
-   # Run database migrations
-   npx prisma migrate dev
-   npx prisma generate
-
-   # Start backend
-   pnpm run start:dev
    ```
 
-3. **Frontend Setup**
+3. **Set up environment variables**
 
    ```bash
-   cd frontend
-   pnpm install
-
-   # Copy environment variables
-   cp env.example .env.local
-   # Edit .env.local with your API URL
-
-   # Start frontend
-   pnpm run dev
+   cp env.local.example .env.local
    ```
 
-4. **Using Docker (Alternative)**
+   Edit `.env.local` with your configuration:
+
+   ```env
+   MONGODB_URI=mongodb://localhost:27017/url-shortener
+   JWT_SECRET=your-super-secret-jwt-key-here
+   JWT_REFRESH_SECRET=your-super-secret-refresh-jwt-key-here
+   NODE_ENV=development
+   ```
+
+4. **Start MongoDB**
 
    ```bash
-   # Start all services
-   docker-compose up -d
+   # If using local MongoDB
+   mongod
 
-   # Run migrations
-   docker-compose exec backend npx prisma migrate dev
+   # Or use MongoDB Atlas (recommended)
+   # Just update MONGODB_URI in .env.local
    ```
 
-## 📊 Database Schema
+5. **Start the development server**
 
-```prisma
-model User {
-  id           String   @id @default(cuid())
-  email        String   @unique
-  passwordHash String
-  name         String?
-  role         UserRole @default(USER)
-  isVerified   Boolean  @default(false)
-  createdAt    DateTime @default(now())
-  urls         Url[]
+   ```bash
+   pnpm dev
+   ```
+
+   The application will be available at `http://localhost:3000`
+
+## 📊 Database Schema (MongoDB)
+
+```typescript
+// User Schema
+interface IUser {
+  _id: ObjectId
+  email: string
+  passwordHash: string
+  name?: string
+  role: 'ADMIN' | 'USER'
+  isVerified: boolean
+  verificationToken?: string
+  resetToken?: string
+  resetTokenExpiry?: Date
+  createdAt: Date
+  updatedAt: Date
 }
 
-model Url {
-  id          String    @id @default(cuid())
-  shortCode   String    @unique
-  longUrl     String
-  title       String?
-  customSlug  String?
-  clicks      Int       @default(0)
-  expiresAt   DateTime?
-  createdAt   DateTime  @default(now())
-  userId      String?
-  user        User?     @relation(fields: [userId], references: [id])
-  clickAnalytics Click[]
+// URL Schema
+interface IUrl {
+  _id: ObjectId
+  shortCode: string
+  longUrl: string
+  title?: string
+  description?: string
+  customSlug?: string
+  isActive: boolean
+  clicks: number
+  expiresAt?: Date
+  userId?: ObjectId
+  createdAt: Date
+  updatedAt: Date
 }
 
-model Click {
-  id        String   @id @default(cuid())
-  timestamp DateTime @default(now())
-  ipAddress String?
-  country   String?
-  device    String?
-  browser   String?
-  urlId     String
-  url       Url      @relation(fields: [urlId], references: [id])
+// Click Analytics Schema
+interface IClick {
+  _id: ObjectId
+  timestamp: Date
+  ipAddress?: string
+  userAgent?: string
+  referrer?: string
+  country?: string
+  city?: string
+  device?: string
+  browser?: string
+  os?: string
+  urlId: ObjectId
+}
+
+// Blacklisted URLs Schema
+interface IBlacklistedUrl {
+  _id: ObjectId
+  url: string
+  reason?: string
+  createdAt: Date
 }
 ```
 
@@ -152,19 +165,29 @@ model Click {
 
 ### URLs
 
-- `POST /api/urls` - Create short URL
+- `POST /api/urls` - Create short URL (anonymous)
+- `POST /api/urls/authenticated` - Create short URL (authenticated)
 - `GET /api/urls` - Get user's URLs (authenticated)
+- `GET /api/urls/:id` - Get specific URL (authenticated)
 - `PATCH /api/urls/:id` - Update URL (authenticated)
 - `DELETE /api/urls/:id` - Delete URL (authenticated)
+- `POST /api/urls/:id/reactivate` - Reactivate expired URL (authenticated)
 
 ### Analytics
 
 - `GET /api/analytics/urls/:id/stats` - Get URL analytics
 - `GET /api/analytics/dashboard` - Get dashboard stats
 
+### User Management
+
+- `GET /api/user/profile` - Get user profile
+- `PATCH /api/user/profile` - Update user profile
+- `GET /api/user/stats` - Get user statistics
+- `DELETE /api/user/account` - Delete user account
+
 ### Redirect
 
-- `GET /s/:shortCode` - Redirect to original URL
+- `GET /:shortCode` - Redirect to original URL
 
 ## 💰 Monetization Strategy
 
@@ -218,22 +241,55 @@ model Click {
 
 ## 🌐 Deployment
 
-### Frontend (Vercel)
+### Vercel (Recommended)
 
-1. Connect your GitHub repository to Vercel
-2. Set environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
+1. **Connect your GitHub repository to Vercel**
+2. **Set environment variables in Vercel dashboard:**
+   ```env
+   MONGODB_URI=mongodb+srv://...
+   JWT_SECRET=your-production-jwt-secret
+   JWT_REFRESH_SECRET=your-production-refresh-secret
+   NODE_ENV=production
+   ```
+3. **Deploy automatically on push to main branch**
 
-### Backend (Railway/Render)
+### Alternative Hosting
 
-1. Connect your GitHub repository
-2. Set environment variables
-3. Deploy with automatic migrations
+- **Netlify** - Full-stack hosting with serverless functions
+- **Railway** - Full-stack hosting with database
+- **Render** - Full-stack hosting
 
-### Database (PostgreSQL)
+### Database (MongoDB)
 
-- Use managed PostgreSQL from your hosting provider
-- Or self-host with Docker
+- **MongoDB Atlas** (recommended) - Managed MongoDB hosting
+- **Self-hosted MongoDB** with Docker
+- **Railway MongoDB** - Integrated database hosting
+
+### Environment Setup for Production
+
+```env
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/url-shortener
+JWT_SECRET=your-super-secure-production-jwt-secret-256-bit
+JWT_REFRESH_SECRET=your-super-secure-production-refresh-secret-256-bit
+NODE_ENV=production
+```
+
+## 🔄 Migration Notes
+
+This project has been migrated from a separate NestJS backend + Next.js frontend architecture to a unified Next.js full-stack application:
+
+- **Before**: NestJS + PostgreSQL + Prisma (separate backend)
+- **After**: Next.js API Routes + MongoDB + Mongoose (unified app)
+
+### Benefits of the New Architecture
+
+- **Simplified Development**: Single codebase for frontend and backend
+- **Better Performance**: No network calls between frontend and backend
+- **Easier Deployment**: Deploy as a single Next.js application
+- **Type Safety**: Shared types between client and server code
+- **Reduced Complexity**: Fewer moving parts and dependencies
+
+For detailed migration information, see [MIGRATION-README.md](./MIGRATION-README.md).
 
 ## 🤝 Contributing
 
@@ -256,12 +312,6 @@ If you find this project helpful, consider:
 - 💡 Suggesting new features
 - ☕ [Buying me a coffee](https://buymeacoffee.com/yourusername)
 
-## 📞 Contact
-
-- **Email**: support@yoursite.com
-- **Twitter**: [@yourusername](https://twitter.com/yourusername)
-- **Discord**: [Join our community](https://discord.gg/yourinvite)
-
 ---
 
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [cresxjohn](https://github.com/cresxjohn)
