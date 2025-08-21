@@ -131,7 +131,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-      {/* Enhanced Header */
+      {/* Enhanced Header */}
       <div className="border-b bg-white/80 shadow-sm backdrop-blur-md">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -172,7 +172,7 @@ export default function ProfilePage() {
       </div>
 
       <div className="container mx-auto max-w-2xl px-4 py-8">
-        {/* Profile Information */
+        {/* Profile Information */}
         <Card className="mb-8 border-0 bg-white/80 shadow-xl backdrop-blur-sm">
           <CardHeader className="border-b bg-gradient-to-r from-blue-50 to-purple-50">
             <CardTitle className="flex items-center">
@@ -184,9 +184,7 @@ export default function ProfilePage() {
               </span>
               <Sparkles className="ml-2 h-5 w-5 text-purple-500" />
             </CardTitle>
-            <CardDescription>
-              Update your profile details
-            </CardDescription>
+            <CardDescription>Update your profile details</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <form onSubmit={handleUpdateProfile} className="space-y-6">
@@ -223,8 +221,8 @@ export default function ProfilePage() {
                   className="border-gray-200 bg-gradient-to-r from-gray-50 to-blue-50"
                 />
                 <p className="mt-2 rounded-lg border bg-blue-50 p-2 text-xs text-gray-500">
-                  🔒 Your email address is protected and cannot be
-                  changed. Contact support if you need assistance.
+                  🔒 Your email address is protected and cannot be changed.
+                  Contact support if you need assistance.
                 </p>
               </div>
 
@@ -266,7 +264,7 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
 
-        {/* Account Statistics */
+        {/* Account Statistics */}
         <Card className="mb-8 border-0 bg-white/80 shadow-xl backdrop-blur-sm">
           <CardHeader className="border-b bg-gradient-to-r from-green-50 to-blue-50">
             <CardTitle className="flex items-center">
@@ -278,9 +276,7 @@ export default function ProfilePage() {
               </span>
               <Star className="ml-2 h-5 w-5 animate-pulse text-yellow-500" />
             </CardTitle>
-            <CardDescription>
-              Your account performance overview
-            </CardDescription>
+            <CardDescription>Your account performance overview</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid grid-cols-2 gap-4">
@@ -335,8 +331,8 @@ export default function ProfilePage() {
                   Delete Account
                 </h4>
                 <p className="mb-4 text-sm text-red-700">
-                  Permanently delete your account and all associated
-                  links and data. This action cannot be undone.
+                  Permanently delete your account and all associated links and
+                  data. This action cannot be undone.
                 </p>
                 <Button
                   variant="destructive"
