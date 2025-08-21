@@ -21,7 +21,10 @@ export function Hero() {
   const { isAuthenticated, user } = useAuthStore();
 
   return (
-    <section className="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20 lg:py-32">
+    <section
+      id="hero"
+      className="relative bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20 lg:py-32"
+    >
       {/* Magical Background Pattern */}
       <div className="bg-grid-slate-100 absolute inset-0 opacity-40 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]" />
 

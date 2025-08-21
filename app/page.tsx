@@ -28,11 +28,11 @@ export default function HomePage() {
         <Hero />
 
         {/* Non-intrusive Ad Banner */}
-        <section className="bg-muted/50 py-4">
+        {/* <section className="bg-muted/50 py-4">
           <div className="container mx-auto px-4">
             <AdBanner slot="homepage-top" className="mx-auto max-w-4xl" lazy />
           </div>
-        </section>
+        </section> */}
 
         {/* Features Section */}
         <Features />
@@ -44,17 +44,17 @@ export default function HomePage() {
         <Stats />
 
         {/* Donation Banner */}
-        <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
+        {/* <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
           <div className="container mx-auto px-4">
             <DonationBanner />
           </div>
-        </section>
+        </section> */}
 
         {/* FAQ Section */}
         <FAQ />
 
         {/* Bottom Ad Banner */}
-        <section className="bg-muted/30 py-6">
+        {/* <section className="bg-muted/30 py-6">
           <div className="container mx-auto px-4">
             <AdBanner
               slot="homepage-bottom"
@@ -62,7 +62,7 @@ export default function HomePage() {
               lazy
             />
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />

@@ -119,7 +119,7 @@ export function FAQ() {
                 Start Your Magic
               </a>
               <a
-                href="/"
+                href="/#hero"
                 className="inline-flex items-center justify-center rounded-md border border-blue-300 px-6 py-3 font-medium text-blue-600 transition-colors hover:bg-blue-50"
               >
                 Try Without Account
