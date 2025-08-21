@@ -43,7 +43,7 @@ export function Hero() {
 
       <div className="container relative mx-auto px-4">
         <div className="mx-auto max-w-4xl text-center">
-          {/* Magical Hero Headline */}
+          {/* Hero Headline */}
           <div className="mb-6 flex items-center justify-center space-x-2">
             <Sparkles className="h-8 w-8 animate-bounce text-blue-500" />
             <Zap className="h-10 w-10 text-purple-600" />
@@ -53,16 +53,15 @@ export function Hero() {
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
             DV4 Links –{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Create Smart Links
+              Shorten links in seconds
             </span>{' '}
-            with Advanced Analytics
+            and track how they perform
           </h1>
 
           {/* Hero Description */}
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-            Transform and manage your URLs with ease. Get detailed analytics,
-            create custom short codes, and track performance. 100% free forever,
-            no hidden costs.
+            Create short links, add custom slugs, and see clicks, countries, and
+            devices. Free to use with no hidden fees.
           </p>
 
           {/* Trust Indicators */}
@@ -81,9 +80,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Magical Content Based on Authentication */}
+          {/* Content Based on Authentication */}
           {isAuthenticated ? (
-            /* Magical Authenticated User Content */
+            /* Authenticated User Content */
             <div className="mt-12">
               <Card className="border-0 bg-white/80 shadow-2xl backdrop-blur-sm">
                 <div className="rounded-t-lg border-b bg-gradient-to-r from-blue-50 to-purple-50 p-8">
@@ -91,8 +90,7 @@ export function Hero() {
                     <div className="mb-4 flex items-center justify-center space-x-2">
                       <Sparkles className="h-6 w-6 animate-bounce text-blue-500" />
                       <h2 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
-                        Welcome back, {user?.name?.split(' ')[0] || 'Wizard'}!
-                        ✨
+                        Welcome back, {user?.name?.split(' ')[0] || 'there'}!
                       </h2>
                       <Heart className="h-6 w-6 animate-pulse text-red-500" />
                     </div>
@@ -133,14 +131,14 @@ export function Hero() {
               </Card>
             </div>
           ) : (
-            /* Magical Guest User Content */
+            /* Guest User Content */
             <>
-              {/* Magical URL Shortener Widget */}
+              {/* URL Shortener Widget */}
               <div className="mt-12">
                 <UrlShortener />
               </div>
 
-              {/* Magical Secondary CTA */}
+              {/* Secondary CTA */}
               <div className="mt-8">
                 <div className="rounded-lg border border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 p-4">
                   <p className="text-sm text-gray-600">
@@ -158,50 +156,6 @@ export function Hero() {
               </div>
             </>
           )}
-        </div>
-
-        {/* Magical Feature Cards */}
-        <div className="mx-auto mt-20 max-w-5xl">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <Card className="border-0 bg-white/80 p-6 text-center shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-r from-blue-100 to-purple-100 shadow-lg transition-transform duration-200 hover:scale-110">
-                <Zap className="h-7 w-7 text-blue-600" />
-              </div>
-              <h3 className="mt-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-lg font-semibold text-transparent">
-                Custom Magic Links
-              </h3>
-              <p className="mt-2 text-sm text-gray-600">
-                Create memorable custom magic codes or use our auto-generated
-                enchanted spells
-              </p>
-            </Card>
-
-            <Card className="border-0 bg-white/80 p-6 text-center shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-r from-purple-100 to-pink-100 shadow-lg transition-transform duration-200 hover:scale-110">
-                <BarChart3 className="h-7 w-7 text-purple-600" />
-              </div>
-              <h3 className="mt-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-lg font-semibold text-transparent">
-                Enchanted Analytics
-              </h3>
-              <p className="mt-2 text-sm text-gray-600">
-                Track magical clicks, mystical geographic data, enchanted
-                referrers, and device divination
-              </p>
-            </Card>
-
-            <Card className="border-0 bg-white/80 p-6 text-center shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl sm:col-span-2 lg:col-span-1">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-r from-green-100 to-blue-100 shadow-lg transition-transform duration-200 hover:scale-110">
-                <Shield className="h-7 w-7 text-green-600" />
-              </div>
-              <h3 className="mt-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-lg font-semibold text-transparent">
-                Magically Protected
-              </h3>
-              <p className="mt-2 text-sm text-gray-600">
-                99.9% magical uptime with dark magic protection and enchanted
-                HTTPS barriers
-              </p>
-            </Card>
-          </div>
         </div>
       </div>
     </section>

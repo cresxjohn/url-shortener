@@ -3,28 +3,28 @@ import { Sparkles, Star, Heart, Zap } from 'lucide-react';
 
 const steps = [
   {
-    step: '✨',
-    title: 'Cast Your URL Spell',
+    step: '1',
+    title: 'Paste your long URL',
     description:
-      'Place your long URL into our magical forge. Add a custom enchantment code if you desire magical personalization.',
+      'Enter the link you want to shorten. Optionally choose a custom slug.',
     icon: Zap,
     color: 'text-blue-500',
     bgColor: 'bg-gradient-to-r from-blue-100 to-purple-100',
   },
   {
-    step: '⚡',
-    title: 'Forge Magical Link',
+    step: '2',
+    title: 'Create your short link',
     description:
-      'Click "Forge Magical Link" and watch as your enchanted short link materializes instantly with supernatural speed.',
+      'Click Create. We generate a short link that’s ready to share.',
     icon: Star,
     color: 'text-purple-500',
     bgColor: 'bg-gradient-to-r from-purple-100 to-pink-100',
   },
   {
-    step: '🔮',
-    title: 'Share & Divine Analytics',
+    step: '3',
+    title: 'Share and track results',
     description:
-      'Share your magical link across realms and divine mystical insights with our enchanted analytics crystal ball.',
+      'Share your link anywhere and view clicks, countries, devices, and more in your dashboard.',
     icon: Heart,
     color: 'text-red-500',
     bgColor: 'bg-gradient-to-r from-red-100 to-pink-100',
@@ -39,14 +39,12 @@ export function HowItWorks() {
           <div className="mb-4 flex items-center justify-center space-x-2">
             <Sparkles className="h-6 w-6 animate-pulse text-blue-500" />
             <h2 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
-              How the Magic Works
+              How it works
             </h2>
             <Star className="h-6 w-6 animate-bounce text-yellow-500" />
           </div>
           <p className="text-lg text-gray-600">
-            Create enchanted links in seconds with our simple 3-spell magical
-            process. No wizard registration required to begin your magical
-            journey.
+            Shorten a link in seconds and see exactly how it performs.
           </p>
         </div>
 
