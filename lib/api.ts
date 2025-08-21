@@ -10,6 +10,12 @@ const api = axios.create({
   withCredentials: true,
 });
 
+// Separate client without interceptors for refresh calls
+const refreshClient = axios.create({
+  baseURL: `${API_URL}/api`,
+  withCredentials: true,
+});
+
 // Request interceptor to add auth token
 api.interceptors.request.use(
   (config) => {
@@ -28,24 +34,41 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalRequest = error.config;
+    const originalRequest = error.config || {};
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    // Do not try to refresh on the refresh endpoint itself
+    const url: string = originalRequest?.url || '';
+    if (
+      url.includes('/auth/refresh') ||
+      url.includes('/auth/login') ||
+      url.includes('/auth/signup') ||
+      url.includes('/auth/forgot-password') ||
+      url.includes('/auth/reset-password')
+    ) {
+      return Promise.reject(error);
+    }
+
+    const hasToken = !!useAuthStore.getState().accessToken;
+
+    if (error.response?.status === 401 && hasToken && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
-        const response = await api.post('/auth/refresh');
+        const response = await refreshClient.post('/auth/refresh');
         const { accessToken } = response.data;
-        
+
         useAuthStore.getState().setAccessToken(accessToken);
-        
+
         // Retry original request with new token
+        originalRequest.headers = originalRequest.headers || {};
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
         return api(originalRequest);
       } catch (refreshError) {
         // Refresh failed, logout user
         useAuthStore.getState().logout();
-        window.location.href = '/login';
+        useAuthStore
+          .getState()
+          .setError('Your session expired. Please sign in.');
         return Promise.reject(refreshError);
       }
     }
@@ -55,4 +78,3 @@ api.interceptors.response.use(
 );
 
 export default api;
-
