@@ -38,11 +38,9 @@ export async function POST(request: NextRequest) {
     user.resetTokenExpiry = new Date(Date.now() + expiryMs);
     await user.save();
 
-    // Build reset URL and send email
-    const origin =
-      typeof process !== 'undefined' && process.env.NEXT_PUBLIC_APP_URL
-        ? process.env.NEXT_PUBLIC_APP_URL
-        : 'http://localhost:3000';
+    // Build reset URL from env or request origin (never default to localhost in prod)
+    const envAppUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, '');
+    const origin = envAppUrl || request.nextUrl.origin;
     const resetUrl = `${origin}/reset-password?token=${encodeURIComponent(resetToken)}`;
     await sendPasswordResetEmail(normalizedEmail, resetUrl);
 
