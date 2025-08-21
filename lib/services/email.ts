@@ -24,7 +24,10 @@ export async function sendPasswordResetEmail(
       : `DV4 Links <${EMAIL_FROM}>`;
 
     const brandName = 'DV4 Links';
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const appUrl =
+      typeof window !== 'undefined'
+        ? window.location.origin
+        : process.env.NEXT_PUBLIC_APP_URL || '';
     const html = buildPasswordResetEmailHtml({ brandName, appUrl, resetUrl });
 
     const { data, error } = await resend.emails.send({
