@@ -1,10 +1,12 @@
 // Reserved routes that cannot be used as custom slugs
 export const RESERVED_ROUTES = [
   'login',
-  'signup', 
+  'signup',
   'dashboard',
   'profile',
   'analytics',
+  'forgot-password',
+  'reset-password',
   'terms',
   'privacy',
   'admin',
@@ -81,17 +83,26 @@ export function validateCustomSlug(slug: string): SlugValidationResult {
 
   // Check length
   if (slug.length < 1 || slug.length > 50) {
-    return { isValid: false, error: 'Slug must be between 1 and 50 characters' };
+    return {
+      isValid: false,
+      error: 'Slug must be between 1 and 50 characters',
+    };
   }
 
   // Check if it's a reserved route
   if (RESERVED_ROUTES.includes(slug.toLowerCase())) {
-    return { isValid: false, error: 'This slug is reserved and cannot be used' };
+    return {
+      isValid: false,
+      error: 'This slug is reserved and cannot be used',
+    };
   }
 
   // Check format - only alphanumeric, hyphens, and underscores
   if (!/^[a-zA-Z0-9_-]+$/.test(slug)) {
-    return { isValid: false, error: 'Slug can only contain letters, numbers, hyphens, and underscores' };
+    return {
+      isValid: false,
+      error: 'Slug can only contain letters, numbers, hyphens, and underscores',
+    };
   }
 
   return { isValid: true };
@@ -104,4 +115,3 @@ export function sanitizeSlug(input: string): string {
     .replace(/[^a-zA-Z0-9_-]/g, '') // Remove invalid characters
     .slice(0, 50); // Limit length
 }
-

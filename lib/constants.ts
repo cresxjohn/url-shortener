@@ -1,9 +1,11 @@
 export const RESERVED_ROUTES = [
   'login',
-  'signup', 
+  'signup',
   'dashboard',
   'profile',
   'analytics',
+  'forgot-password',
+  'reset-password',
   'terms',
   'privacy',
   'admin',
@@ -63,4 +65,3 @@ export const RESERVED_ROUTES = [
   'trial',
   'demo',
 ];
-
