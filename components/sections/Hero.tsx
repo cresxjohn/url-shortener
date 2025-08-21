@@ -48,7 +48,7 @@ export function Hero() {
           </div>
 
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            LinkForge –{' '}
+            DV4 Links –{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Create Smart Links
             </span>{' '}

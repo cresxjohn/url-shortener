@@ -75,7 +75,7 @@ export function Features() {
             <Sparkles className="h-6 w-6 animate-bounce text-purple-500" />
           </div>
           <p className="text-lg text-gray-600">
-            Our free LinkForge platform comes packed with powerful magical
+            Our free DV4 Links platform comes packed with powerful magical
             features to help you create, enchant, and track your magical links
             with supernatural effectiveness.
           </p>

@@ -108,7 +108,7 @@ export function FAQ() {
               <Sparkles className="h-5 w-5 animate-bounce text-blue-500" />
             </div>
             <p className="mb-4 text-gray-600">
-              Start creating enchanted URLs with LinkForge magic! ✨
+              Start creating enchanted URLs with DV4 Links magic! ✨
             </p>
             <div className="flex flex-col justify-center gap-3 sm:flex-row">
               <a

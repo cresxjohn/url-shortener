@@ -180,7 +180,7 @@ export default function AnalyticsPage({ params }: { params: { id: string } }) {
                 </div>
                 <div>
                   <h1 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-lg font-bold text-transparent sm:text-xl">
-                    LinkForge
+                    DV4 Links
                   </h1>
                   <p className="hidden text-xs text-gray-500 sm:block">
                     Analytics Dashboard

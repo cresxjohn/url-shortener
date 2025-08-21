@@ -58,7 +58,7 @@ export function Stats() {
             <Sparkles className="h-6 w-6 animate-bounce text-blue-300" />
           </div>
           <p className="text-lg opacity-90">
-            Join thousands of digital wizards who trust LinkForge with their
+            Join thousands of digital wizards who trust DV4 Links with their
             magical link creation needs
           </p>
         </div>

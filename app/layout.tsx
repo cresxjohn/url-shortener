@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     'free link shortener',
     'url analytics',
   ],
-  authors: [{ name: 'URL Shortener' }],
-  creator: 'URL Shortener',
+  authors: [{ name: 'DV4 Links' }],
+  creator: 'DV4 Links',
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
   ),
@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    title: 'Free URL Shortener – Create Custom Short Links with Analytics',
+    title: 'DV4 Links – Create Custom Short Links with Analytics',
     description:
       'Shorten, share, and manage your links with ease. 100% free URL shortener with analytics, custom slugs, and no hidden costs.',
-    siteName: 'URL Shortener',
+    siteName: 'DV4 Links',
     images: [
       {
         url: '/og-image.png',
@@ -44,11 +44,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free URL Shortener – Create Custom Short Links with Analytics',
+    title: 'DV4 Links – Create Custom Short Links with Analytics',
     description:
       'Shorten, share, and manage your links with ease. 100% free URL shortener with analytics, custom slugs, and no hidden costs.',
     images: ['/og-image.png'],
-    creator: '@urlshortener',
+    creator: '@dv4links',
   },
   robots: {
     index: true,

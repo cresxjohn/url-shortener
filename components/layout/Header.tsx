@@ -24,7 +24,7 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-bold text-transparent">
-                LinkForge
+                DV4 Links
               </span>
               <span className="-mt-1 text-xs text-gray-500">Create Magic</span>
             </div>

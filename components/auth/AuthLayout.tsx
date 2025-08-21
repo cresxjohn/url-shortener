@@ -38,7 +38,7 @@ export function AuthLayout({
             </div>
             <div className="flex flex-col">
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
-                LinkForge
+                DV4 Links
               </span>
               <span className="-mt-1 text-xs text-gray-500">{subtitle}</span>
             </div>
@@ -76,7 +76,7 @@ export function AuthLayout({
               href="/"
               className="inline-flex items-center font-medium text-gray-500 transition-all duration-200 hover:scale-105 hover:text-blue-600"
             >
-              ← Back to LinkForge
+              ← Back to DV4 Links
             </Link>
           </p>
         </div>

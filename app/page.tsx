@@ -10,9 +10,9 @@ import { AdBanner } from '@/components/ads/AdBanner';
 import { DonationBanner } from '@/components/donations/DonationBanner';
 
 export const metadata: Metadata = {
-  title: 'LinkForge – Create Magic Links with Analytics | Free URL Shortener',
+  title: 'DV4 Links – Create Magic Links with Analytics | Free URL Shortener',
   description:
-    'Transform your URLs into powerful magic links with LinkForge. Free URL shortener with analytics, custom codes, and expiration settings. Create magic, track performance. 100% free!',
+    'Transform your URLs into powerful magic links with DV4 Links. Free URL shortener with analytics, custom codes, and expiration settings. Create magic, track performance. 100% free!',
   alternates: {
     canonical: '/',
   },
@@ -74,7 +74,7 @@ export default function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: 'LinkForge',
+            name: 'DV4 Links',
             description:
               'Transform URLs into powerful magic links with analytics and custom codes',
             url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
@@ -95,7 +95,7 @@ export default function HomePage() {
             ],
             publisher: {
               '@type': 'Organization',
-              name: 'LinkForge',
+              name: 'DV4 Links',
             },
           }),
         }}
