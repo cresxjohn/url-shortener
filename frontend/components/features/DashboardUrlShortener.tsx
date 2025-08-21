@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/Card';
 import { Copy, ExternalLink, Loader2, Check, X, Sparkles } from 'lucide-react';
 import { useUrlStore } from '@/store/url-store';
 import { isValidUrl, getShortUrl, copyToClipboard } from '@/lib/utils';
+import { validateCustomSlug } from '@/lib/validation';
 import api from '@/lib/api';
 import toast from 'react-hot-toast';
 
@@ -73,6 +74,15 @@ export function DashboardUrlShortener({
         'Please enter a valid URL (must include http:// or https://)'
       );
       return;
+    }
+
+    // Validate custom slug if provided
+    if (customSlug.trim()) {
+      const slugValidation = validateCustomSlug(customSlug.trim());
+      if (!slugValidation.isValid) {
+        toast.error(`❌ ${slugValidation.error}`);
+        return;
+      }
     }
 
     setIsLoading(true);

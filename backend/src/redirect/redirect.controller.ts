@@ -4,7 +4,7 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { RedirectService } from './redirect.service';
 
 @ApiTags('redirect')
-@Controller('s')
+@Controller()
 export class RedirectController {
   constructor(private readonly redirectService: RedirectService) {}
 

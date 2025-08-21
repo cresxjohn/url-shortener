@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useUrlStore } from '@/store/url-store';
 import { isValidUrl, getShortUrl, copyToClipboard } from '@/lib/utils';
+import { validateCustomSlug } from '@/lib/validation';
 import api from '@/lib/api';
 import toast from 'react-hot-toast';
 
@@ -70,9 +71,18 @@ export function UrlShortener() {
 
     if (!isValidUrl(longUrl)) {
       toast.error(
-        '🔮 Please enter a valid magical URL (must include http:// or https://)'
+        '🔮 Please enter a valid URL (must include http:// or https://)'
       );
       return;
+    }
+
+    // Validate custom slug if provided
+    if (customSlug.trim()) {
+      const slugValidation = validateCustomSlug(customSlug.trim());
+      if (!slugValidation.isValid) {
+        toast.error(`❌ ${slugValidation.error}`);
+        return;
+      }
     }
 
     setIsLoading(true);

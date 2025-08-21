@@ -671,10 +671,10 @@ export default function DashboardPage() {
 
       {/* Floating Action Button */}
       {!showUrlShortener && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
+        <div className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6">
           <Button
             onClick={() => setShowUrlShortener(true)}
-            className="h-14 w-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-700 hover:to-purple-700 hover:shadow-3xl"
+            className="hover:shadow-3xl h-14 w-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl transition-all duration-300 hover:scale-110 hover:from-blue-700 hover:to-purple-700"
             size="lg"
           >
             <Plus className="h-6 w-6" />

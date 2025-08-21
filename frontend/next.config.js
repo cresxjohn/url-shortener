@@ -10,10 +10,18 @@ const nextConfig = {
         source: '/api/:path*',
         destination: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/:path*`,
       },
-      // Redirect routes to backend
+      // Direct short URL redirects (removed /s/ prefix)
+      // This will only match paths that don't match existing page routes
       {
-        source: '/s/:shortCode',
-        destination: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/s/:shortCode`,
+        source: '/:shortCode([a-zA-Z0-9_-]{1,50})',
+        destination: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/:shortCode`,
+        // Exclude known frontend routes
+        has: [
+          {
+            type: 'host',
+            value: '.*', // Match any host
+          },
+        ],
       },
     ];
   },

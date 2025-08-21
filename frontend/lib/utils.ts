@@ -40,7 +40,7 @@ export function truncateUrl(url: string, maxLength = 50) {
 
 export function getShortUrl(shortCode: string) {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  return `${baseUrl}/s/${shortCode}`;
+  return `${baseUrl}/${shortCode}`;
 }
 
 export function isValidUrl(string: string) {

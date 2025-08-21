@@ -12,6 +12,73 @@ import { UpdateUrlDto } from './dto/update-url.dto';
 
 @Injectable()
 export class UrlService {
+  private readonly RESERVED_ROUTES = [
+    'login',
+    'signup', 
+    'dashboard',
+    'profile',
+    'analytics',
+    'terms',
+    'privacy',
+    'admin',
+    'api',
+    'app',
+    'www',
+    'mail',
+    'ftp',
+    'blog',
+    'contact',
+    'about',
+    'help',
+    'support',
+    'docs',
+    'documentation',
+    'status',
+    'health',
+    'ping',
+    'test',
+    'dev',
+    'staging',
+    'prod',
+    'production',
+    'beta',
+    'alpha',
+    '_next',
+    'static',
+    'assets',
+    'public',
+    'images',
+    'img',
+    'css',
+    'js',
+    'fonts',
+    'favicon',
+    'robots',
+    'sitemap',
+    'manifest',
+    '.well-known',
+    'oauth',
+    'auth',
+    'login',
+    'logout',
+    'register',
+    'reset',
+    'verify',
+    'settings',
+    'account',
+    'billing',
+    'pricing',
+    'plans',
+    'features',
+    'enterprise',
+    'business',
+    'pro',
+    'premium',
+    'free',
+    'trial',
+    'demo',
+  ];
+
   constructor(private prisma: PrismaService) {}
 
   async createUrl(createUrlDto: CreateUrlDto, userId?: string) {
@@ -28,13 +95,8 @@ export class UrlService {
     // Generate or use custom short code
     let shortCode: string;
     if (customSlug) {
-      // Check if custom slug is available
-      const existingUrl = await this.prisma.url.findUnique({
-        where: { shortCode: customSlug },
-      });
-      if (existingUrl) {
-        throw new ConflictException('Custom slug already exists');
-      }
+      // Validate custom slug
+      await this.validateSlug(customSlug);
       shortCode = customSlug;
     } else {
       shortCode = await this.generateUniqueShortCode();
@@ -216,12 +278,44 @@ export class UrlService {
     });
   }
 
+  private async validateSlug(slug: string): Promise<void> {
+    // Check if slug is a reserved route
+    if (this.RESERVED_ROUTES.includes(slug.toLowerCase())) {
+      throw new BadRequestException('Slug conflicts with reserved route');
+    }
+
+    // Check if slug contains only alphanumeric characters, hyphens, and underscores
+    if (!/^[a-zA-Z0-9_-]+$/.test(slug)) {
+      throw new BadRequestException('Slug can only contain letters, numbers, hyphens, and underscores');
+    }
+
+    // Check minimum and maximum length
+    if (slug.length < 1 || slug.length > 50) {
+      throw new BadRequestException('Slug must be between 1 and 50 characters');
+    }
+
+    // Check if slug is already taken
+    const existingUrl = await this.prisma.url.findUnique({
+      where: { shortCode: slug },
+    });
+    if (existingUrl) {
+      throw new ConflictException('Custom slug already exists');
+    }
+  }
+
   private async generateUniqueShortCode(): Promise<string> {
     let attempts = 0;
-    const maxAttempts = 5;
+    const maxAttempts = 10;
 
     while (attempts < maxAttempts) {
       const shortCode = nanoid(6);
+      
+      // Check if it's not a reserved route
+      if (this.RESERVED_ROUTES.includes(shortCode.toLowerCase())) {
+        attempts++;
+        continue;
+      }
+
       const existingUrl = await this.prisma.url.findUnique({
         where: { shortCode },
       });
