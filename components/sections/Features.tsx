@@ -14,49 +14,49 @@ import { Card } from '@/components/ui/Card';
 const features = [
   {
     icon: Zap,
-    title: 'Magical Link Creation',
+    title: 'Create short links',
     description:
-      'Create memorable custom magic codes for your URLs or use our auto-generated enchanted spells.',
+      'Turn any long URL into a short, shareable link. Use your own custom slug if you like.',
     color: 'text-blue-600',
     bgColor: 'bg-gradient-to-r from-blue-100 to-purple-100',
   },
   {
     icon: BarChart3,
-    title: 'Enchanted Analytics',
+    title: 'Built‑in analytics',
     description:
-      'Track magical clicks, mystical geographic data, enchanted referrers, devices, and more with detailed divination.',
+      'See clicks over time, top countries, devices, browsers, and referrers in your dashboard.',
     color: 'text-purple-600',
     bgColor: 'bg-gradient-to-r from-purple-100 to-pink-100',
   },
   {
     icon: Shield,
-    title: 'Magically Protected',
+    title: 'Safe by default',
     description:
-      '99.9% magical uptime with dark magic protection, HTTPS enchantment barriers, and evil spell filtering.',
+      'HTTPS everywhere, blacklist checks, and abuse protection keep your links and users safe.',
     color: 'text-green-600',
     bgColor: 'bg-gradient-to-r from-green-100 to-blue-100',
   },
   {
     icon: Rocket,
-    title: 'Teleportation Speed',
+    title: 'Fast redirects',
     description:
-      'Global magical portals ensure your enchanted links redirect instantly from anywhere in the digital realm.',
+      'Snappy performance and reliable uptime so your links work the moment they’re clicked.',
     color: 'text-yellow-600',
     bgColor: 'bg-gradient-to-r from-yellow-100 to-orange-100',
   },
   {
     icon: Globe,
-    title: 'Universal Magic',
+    title: 'Works everywhere',
     description:
-      'Magical towers worldwide ensure instant teleportation and detailed mystical geographic divination.',
+      'Share links on social, email, and SMS. Your short links open on any device and browser.',
     color: 'text-indigo-600',
     bgColor: 'bg-gradient-to-r from-indigo-100 to-purple-100',
   },
   {
     icon: Smartphone,
-    title: 'Pocket-Sized Magic',
+    title: 'Mobile‑friendly',
     description:
-      'Responsive spellcasting design works perfectly on all enchanted devices - desktop, tablet, and mobile.',
+      'Create and manage links from your phone or desktop with a clean, responsive UI.',
     color: 'text-pink-600',
     bgColor: 'bg-gradient-to-r from-pink-100 to-red-100',
   },
@@ -70,14 +70,13 @@ export function Features() {
           <div className="mb-4 flex items-center justify-center space-x-2">
             <Star className="h-6 w-6 animate-pulse text-yellow-500" />
             <h2 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
-              Everything you need to forge magical links
+              Everything you need to shorten and track links
             </h2>
             <Sparkles className="h-6 w-6 animate-bounce text-purple-500" />
           </div>
           <p className="text-lg text-gray-600">
-            Our free DV4 Links platform comes packed with powerful magical
-            features to help you create, enchant, and track your magical links
-            with supernatural effectiveness.
+            DV4 Links makes it simple to create short links and understand how
+            they perform.
           </p>
         </div>
 

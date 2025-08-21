@@ -226,9 +226,9 @@ export default function DashboardPage() {
             <div className="absolute inset-0 mx-auto h-16 w-16 animate-spin rounded-full border-4 border-blue-200 border-t-blue-600"></div>
           </div>
           <h2 className="mt-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-semibold text-transparent">
-            Preparing your magic dashboard...
+            Loading your dashboard...
           </h2>
-          <p className="mt-2 text-gray-600">Summoning your links ✨</p>
+          <p className="mt-2 text-gray-600">Loading your links...</p>
         </div>
       </div>
     );
@@ -266,7 +266,7 @@ export default function DashboardPage() {
               >
                 <Sparkles className="mr-1 h-4 w-4 sm:mr-2" />
                 <span className="hidden sm:inline">
-                  {showUrlShortener ? 'Hide Magic' : 'Create Magic Link'}
+                  {showUrlShortener ? 'Hide Form' : 'Create Short Link'}
                 </span>
                 <span className="sm:hidden">Create</span>
               </Button>
@@ -297,7 +297,7 @@ export default function DashboardPage() {
             </h2>
           </div>
           <p className="text-lg text-gray-600">
-            Ready to create some magic? ✨
+            Ready to create your first link?
           </p>
         </div>
       </div>
@@ -415,7 +415,7 @@ export default function DashboardPage() {
                 </div>
                 <div>
                   <CardTitle className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-xl text-transparent">
-                    Your Magic Links
+                    Your Links
                   </CardTitle>
                   <CardDescription>
                     Manage, track, and optimize your shortened URLs
@@ -441,11 +441,11 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <h3 className="mb-2 text-2xl font-bold text-gray-800">
-                  Ready to create magic? ✨
+                  Ready to create your first link?
                 </h3>
                 <p className="mx-auto mb-6 max-w-md text-gray-600">
                   Transform your long, boring URLs into powerful, trackable
-                  magic links that enchant your audience!
+                  short links that engage your audience!
                 </p>
                 <Button
                   onClick={() => setShowUrlShortener(true)}
@@ -453,7 +453,7 @@ export default function DashboardPage() {
                   size="lg"
                 >
                   <Sparkles className="mr-2 h-5 w-5" />
-                  Create Your First Magic Link
+                  Create Your First Link
                 </Button>
               </div>
             ) : (

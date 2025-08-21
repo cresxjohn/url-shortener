@@ -61,14 +61,13 @@ export function FAQ() {
           <div className="mb-4 flex items-center justify-center space-x-2">
             <Star className="h-6 w-6 animate-pulse text-yellow-500" />
             <h2 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl">
-              Frequently Asked Magical Questions
+              Frequently asked questions
             </h2>
             <Sparkles className="h-6 w-6 animate-bounce text-purple-500" />
           </div>
           <p className="text-lg text-gray-600">
-            Got magical questions? We've got enchanted answers. If you can't
-            find the spells you're looking for, feel free to contact our wizard
-            council for assistance.
+            Answers to common questions about DV4 Links. If you need more help,
+            contact us.
           </p>
         </div>
 
@@ -103,12 +102,12 @@ export function FAQ() {
             <div className="mb-2 flex items-center justify-center space-x-2">
               <Star className="h-5 w-5 animate-pulse text-yellow-500" />
               <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-lg font-medium text-transparent">
-                Ready to forge your magical links?
+                Ready to shorten your first link?
               </p>
               <Sparkles className="h-5 w-5 animate-bounce text-blue-500" />
             </div>
             <p className="mb-4 text-gray-600">
-              Start creating enchanted URLs with DV4 Links magic! ✨
+              Create a short link now — it takes a few seconds.
             </p>
             <div className="flex flex-col justify-center gap-3 sm:flex-row">
               <a
@@ -116,13 +115,13 @@ export function FAQ() {
                 className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 font-medium text-white shadow-lg transition-all duration-200 hover:scale-105 hover:from-blue-700 hover:to-purple-700 hover:shadow-xl"
               >
                 <Sparkles className="mr-2 h-4 w-4" />
-                Start Your Magic
+                Create account
               </a>
               <a
                 href="/#hero"
                 className="inline-flex items-center justify-center rounded-md border border-blue-300 px-6 py-3 font-medium text-blue-600 transition-colors hover:bg-blue-50"
               >
-                Try Without Account
+                Try without account
               </a>
             </div>
           </div>

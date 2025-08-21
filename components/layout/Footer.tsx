@@ -20,9 +20,9 @@ export function Footer() {
               </div>
             </Link>
             <p className="mb-4 max-w-md text-gray-600">
-              Free URL shortener with advanced analytics. Create custom short
-              links, track detailed clicks, and manage your URLs with ease. 100%
-              free forever, no hidden costs.
+              DV4 Links is a free URL shortener with built‑in analytics. Create
+              custom short links, track clicks, and manage everything in a
+              simple dashboard.
             </p>
             <div className="flex space-x-4">
               <a

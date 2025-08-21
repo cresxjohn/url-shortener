@@ -42,7 +42,7 @@ export function getShortUrl(shortCode: string) {
   const baseUrl =
     typeof window !== 'undefined'
       ? window.location.origin
-      : process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+      : 'http://localhost:3000'; // Fallback for SSR during build
   return `${baseUrl}/${shortCode}`;
 }
 

@@ -122,7 +122,7 @@ export default function ProfilePage() {
             <Heart className="h-8 w-8 animate-pulse text-red-500" />
           </div>
           <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-lg font-medium text-transparent">
-            Awakening your magical profile...
+            Loading your profile...
           </p>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-      {/* Enhanced Magical Header */}
+      {/* Enhanced Header */
       <div className="border-b bg-white/80 shadow-sm backdrop-blur-md">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -141,12 +141,12 @@ export default function ProfilePage() {
                   <User className="h-full w-full text-white" />
                 </div>
                 <h1 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
-                  Wizard Profile Settings
+                  Profile Settings
                 </h1>
                 <Sparkles className="h-6 w-6 animate-bounce text-purple-500" />
               </div>
               <p className="ml-13 text-gray-600">
-                Manage your magical account enchantments
+                Manage your account settings
               </p>
             </div>
             <div className="flex items-center space-x-3">
@@ -172,7 +172,7 @@ export default function ProfilePage() {
       </div>
 
       <div className="container mx-auto max-w-2xl px-4 py-8">
-        {/* Magical Profile Information */}
+        {/* Profile Information */
         <Card className="mb-8 border-0 bg-white/80 shadow-xl backdrop-blur-sm">
           <CardHeader className="border-b bg-gradient-to-r from-blue-50 to-purple-50">
             <CardTitle className="flex items-center">
@@ -180,12 +180,12 @@ export default function ProfilePage() {
                 <User className="h-full w-full text-white" />
               </div>
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Wizard Profile Information
+                Profile Information
               </span>
               <Sparkles className="ml-2 h-5 w-5 text-purple-500" />
             </CardTitle>
             <CardDescription>
-              Update your magical enchantment details
+              Update your profile details
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
@@ -195,12 +195,12 @@ export default function ProfilePage() {
                   htmlFor="name"
                   className="mb-2 block text-sm font-medium text-gray-700"
                 >
-                  🧙 Wizard Name
+                  👤 Name
                 </label>
                 <Input
                   id="name"
                   type="text"
-                  placeholder="Enter your magical wizard name"
+                  placeholder="Enter your name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   disabled={isUpdating}
@@ -213,7 +213,7 @@ export default function ProfilePage() {
                   htmlFor="email"
                   className="mb-2 block text-sm font-medium text-gray-700"
                 >
-                  ✉️ Magical Contact Scroll
+                  ✉️ Email Address
                 </label>
                 <Input
                   id="email"
@@ -223,8 +223,8 @@ export default function ProfilePage() {
                   className="border-gray-200 bg-gradient-to-r from-gray-50 to-blue-50"
                 />
                 <p className="mt-2 rounded-lg border bg-blue-50 p-2 text-xs text-gray-500">
-                  🔒 Your magical email scroll is protected and cannot be
-                  changed. Contact our wizards if you need assistance.
+                  🔒 Your email address is protected and cannot be
+                  changed. Contact support if you need assistance.
                 </p>
               </div>
 
@@ -253,12 +253,12 @@ export default function ProfilePage() {
                 {isUpdating ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Updating magical profile...
+                    Updating profile...
                   </>
                 ) : (
                   <>
                     <Sparkles className="mr-2 h-4 w-4" />
-                    Update Wizard Profile
+                    Update Profile
                   </>
                 )}
               </Button>
@@ -266,7 +266,7 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
 
-        {/* Magical Account Statistics */}
+        {/* Account Statistics */
         <Card className="mb-8 border-0 bg-white/80 shadow-xl backdrop-blur-sm">
           <CardHeader className="border-b bg-gradient-to-r from-green-50 to-blue-50">
             <CardTitle className="flex items-center">
@@ -274,12 +274,12 @@ export default function ProfilePage() {
                 <BarChart3 className="h-full w-full text-white" />
               </div>
               <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                Magical Statistics
+                Account Statistics
               </span>
               <Star className="ml-2 h-5 w-5 animate-pulse text-yellow-500" />
             </CardTitle>
             <CardDescription>
-              Your enchantment performance overview
+              Your account performance overview
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
@@ -291,7 +291,7 @@ export default function ProfilePage() {
                 <p className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
                   ∞
                 </p>
-                <p className="text-sm text-gray-600">Magic Links Created</p>
+                <p className="text-sm text-gray-600">Links Created</p>
               </div>
               <div className="rounded-lg border border-green-200 bg-gradient-to-r from-green-50 to-blue-50 p-4 text-center shadow-sm">
                 <div className="mb-2 flex items-center justify-center">
@@ -300,19 +300,18 @@ export default function ProfilePage() {
                 <p className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-2xl font-bold text-transparent">
                   ∞
                 </p>
-                <p className="text-sm text-gray-600">Magical Clicks</p>
+                <p className="text-sm text-gray-600">Total Clicks</p>
               </div>
             </div>
             <div className="mt-4 rounded-lg border bg-gradient-to-r from-blue-50 to-purple-50 p-3">
               <p className="text-center text-xs text-gray-600">
-                ✨ Visit your dashboard for detailed magical analytics and
-                enchantment insights
+                Visit your dashboard for detailed analytics and insights
               </p>
             </div>
           </CardContent>
         </Card>
 
-        {/* Forbidden Magic Zone */}
+        {/* Danger Zone */}
         <Card className="border-red-200 bg-gradient-to-r from-red-50 to-orange-50 shadow-xl">
           <CardHeader className="border-b border-red-200 bg-gradient-to-r from-red-100 to-orange-100">
             <CardTitle className="flex items-center text-red-900">
@@ -320,12 +319,12 @@ export default function ProfilePage() {
                 <Shield className="h-full w-full text-white" />
               </div>
               <span className="bg-gradient-to-r from-red-700 to-orange-700 bg-clip-text text-transparent">
-                Forbidden Magic Zone
+                Danger Zone
               </span>
               <span className="ml-2 text-red-500">⚠️</span>
             </CardTitle>
             <CardDescription className="text-red-600">
-              Dark spells with irreversible and destructive consequences
+              Actions with irreversible consequences
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
@@ -333,12 +332,11 @@ export default function ProfilePage() {
               <div className="rounded-lg border border-red-200 bg-white/80 p-4">
                 <h4 className="mb-2 flex items-center text-sm font-medium text-red-900">
                   <span className="mr-2">🗑️</span>
-                  Banish Wizard Account
+                  Delete Account
                 </h4>
                 <p className="mb-4 text-sm text-red-700">
-                  Permanently banish your wizard account and destroy all magical
-                  links and enchantment data. This dark magic cannot be undone -
-                  your digital soul will be lost forever.
+                  Permanently delete your account and all associated
+                  links and data. This action cannot be undone.
                 </p>
                 <Button
                   variant="destructive"
@@ -349,12 +347,12 @@ export default function ProfilePage() {
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Casting banishment spell...
+                      Deleting account...
                     </>
                   ) : (
                     <>
                       <Shield className="mr-2 h-4 w-4" />
-                      Banish Wizard Account
+                      Delete Account
                     </>
                   )}
                 </Button>

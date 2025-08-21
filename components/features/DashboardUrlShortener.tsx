@@ -154,7 +154,7 @@ export function DashboardUrlShortener({
               <Sparkles className="h-full w-full text-white" />
             </div>
             <h3 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-xl font-semibold text-transparent">
-              Create Magic Link ✨
+              Create Short Link
             </h3>
           </div>
           {onClose && (
@@ -265,12 +265,12 @@ export function DashboardUrlShortener({
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Creating Magic...
+                  Creating...
                 </>
               ) : (
                 <>
                   <Sparkles className="mr-2 h-4 w-4" />
-                  Create Magic Link
+                  Create Short Link
                 </>
               )}
             </Button>

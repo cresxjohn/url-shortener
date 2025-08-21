@@ -10,15 +10,46 @@ import { AdBanner } from '@/components/ads/AdBanner';
 import { DonationBanner } from '@/components/donations/DonationBanner';
 
 export const metadata: Metadata = {
-  title: 'DV4 Links – Create Magic Links with Analytics | Free URL Shortener',
+  title: 'DV4 Links – Free URL Shortener with Analytics',
   description:
-    'Transform your URLs into powerful magic links with DV4 Links. Free URL shortener with analytics, custom codes, and expiration settings. Create magic, track performance. 100% free!',
+    'Free URL shortener with built-in analytics. Create custom short links, track clicks, and manage everything in a simple dashboard. 100% free forever.',
   alternates: {
     canonical: '/',
   },
 };
 
-export default function HomePage() {
+interface PublicStats {
+  totalUrls: number;
+  totalClicks: number;
+  totalUsers: number;
+  uniqueCountries: number;
+  uptime: number;
+}
+
+async function getPublicStats(): Promise<PublicStats | null> {
+  try {
+    // For SSR, we need to build the full URL. In production, this will use the actual domain
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/stats/public`, {
+      next: { revalidate: 300 }, // Cache for 5 minutes
+    });
+
+    if (!response.ok) {
+      console.error('Failed to fetch public stats:', response.status);
+      return null;
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching public stats:', error);
+    return null;
+  }
+}
+
+export default async function HomePage() {
+  const stats = await getPublicStats();
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -41,7 +72,7 @@ export default function HomePage() {
         <HowItWorks />
 
         {/* Stats Section */}
-        <Stats />
+        <Stats stats={stats || undefined} />
 
         {/* Donation Banner */}
         {/* <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-8">
@@ -76,8 +107,11 @@ export default function HomePage() {
             '@type': 'WebApplication',
             name: 'DV4 Links',
             description:
-              'Transform URLs into powerful magic links with analytics and custom codes',
-            url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+              'Free URL shortener with built-in analytics and custom codes',
+            url:
+              typeof window !== 'undefined'
+                ? window.location.origin
+                : 'https://dv4.dev',
             applicationCategory: 'WebApplication',
             operatingSystem: 'Any',
             offers: {
@@ -86,11 +120,10 @@ export default function HomePage() {
               priceCurrency: 'USD',
             },
             featureList: [
-              'Magic link creation',
+              'URL shortening',
               'Custom short codes',
-              'Advanced analytics',
-              'Expiration settings',
-              'QR code generation',
+              'Click analytics',
+              'Link management',
               'Free forever',
             ],
             publisher: {
