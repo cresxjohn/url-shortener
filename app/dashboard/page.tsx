@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import {
@@ -97,21 +97,7 @@ export default function DashboardPage() {
     }
   };
 
-  useEffect(() => {
-    // Wait for hydration before checking auth
-    if (!isHydrated) {
-      return;
-    }
-
-    if (!isAuthenticated) {
-      router.push('/login');
-      return;
-    }
-
-    loadDashboardData();
-  }, [isAuthenticated, isHydrated, router]);
-
-  const loadDashboardData = async () => {
+  const loadDashboardData = useCallback(async () => {
     try {
       setIsLoading(true);
 
@@ -129,7 +115,21 @@ export default function DashboardPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [setUrls, setDashboardStats]);
+
+  useEffect(() => {
+    // Wait for hydration before checking auth
+    if (!isHydrated) {
+      return;
+    }
+
+    if (!isAuthenticated) {
+      router.push('/login');
+      return;
+    }
+
+    loadDashboardData();
+  }, [isAuthenticated, isHydrated, router, loadDashboardData]);
 
   const handleCopyUrl = async (shortCode: string) => {
     const shortUrl = getShortUrl(shortCode);

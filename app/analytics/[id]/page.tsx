@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Card,
@@ -63,21 +63,7 @@ export default function AnalyticsPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { isAuthenticated, isHydrated } = useAuth();
 
-  useEffect(() => {
-    // Wait for hydration before checking auth
-    if (!isHydrated) {
-      return;
-    }
-
-    if (!isAuthenticated) {
-      router.push('/login');
-      return;
-    }
-
-    loadAnalytics();
-  }, [isAuthenticated, isHydrated, params.id, router]);
-
-  const loadAnalytics = async () => {
+  const loadAnalytics = useCallback(async () => {
     try {
       setIsLoading(true);
 
@@ -99,7 +85,21 @@ export default function AnalyticsPage({ params }: { params: { id: string } }) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [params.id, router]);
+
+  useEffect(() => {
+    // Wait for hydration before checking auth
+    if (!isHydrated) {
+      return;
+    }
+
+    if (!isAuthenticated) {
+      router.push('/login');
+      return;
+    }
+
+    loadAnalytics();
+  }, [isAuthenticated, isHydrated, params.id, router, loadAnalytics]);
 
   const handleCopyUrl = async () => {
     if (!urlDetails) return;

@@ -28,11 +28,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
         return;
       }
 
+      // Only run once after hydration
+      if (isInitialized) {
+        return;
+      }
+
       setLoading(true);
 
       try {
-        // If we have a token and user data, validate the token
-        if (accessToken && isAuthenticated && user) {
+        // If we have a token, validate it
+        if (accessToken && isAuthenticated) {
           // Verify the token is still valid by making a request to /auth/me
           const response = await api.get('/auth/me');
 
@@ -57,7 +62,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     isHydrated,
     accessToken,
     isAuthenticated,
-    user,
+    isInitialized,
     setUser,
     logout,
     setLoading,
