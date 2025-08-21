@@ -39,7 +39,10 @@ export function truncateUrl(url: string, maxLength = 50) {
 }
 
 export function getShortUrl(shortCode: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const baseUrl =
+    typeof window !== 'undefined'
+      ? window.location.origin
+      : process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
   return `${baseUrl}/${shortCode}`;
 }
 
@@ -83,4 +86,3 @@ export function generateSlug(text: string) {
     .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
     .trim();
 }
-
