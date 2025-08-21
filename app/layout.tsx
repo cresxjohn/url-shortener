@@ -22,9 +22,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'DV4 Links' }],
   creator: 'DV4 Links',
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-  ),
+  metadataBase: new URL('https://dv4.dev'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -74,10 +72,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link
-          rel="canonical"
-          href={process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}
-        />
+        <link rel="canonical" href="https://dv4.dev" />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"

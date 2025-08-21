@@ -11,7 +11,8 @@ if (RESEND_API_KEY) {
 
 export async function sendPasswordResetEmail(
   toEmail: string,
-  resetUrl: string
+  resetUrl: string,
+  appUrl?: string
 ) {
   if (!resend) {
     console.warn('Resend not configured. Skipping email send.');
@@ -24,11 +25,12 @@ export async function sendPasswordResetEmail(
       : `DV4 Links <${EMAIL_FROM}>`;
 
     const brandName = 'DV4 Links';
-    const appUrl =
-      typeof window !== 'undefined'
-        ? window.location.origin
-        : process.env.NEXT_PUBLIC_APP_URL || '';
-    const html = buildPasswordResetEmailHtml({ brandName, appUrl, resetUrl });
+    const baseAppUrl = appUrl || 'https://dv4.dev'; // Use provided URL or fallback to production domain
+    const html = buildPasswordResetEmailHtml({
+      brandName,
+      appUrl: baseAppUrl,
+      resetUrl,
+    });
 
     const { data, error } = await resend.emails.send({
       from,

@@ -28,7 +28,10 @@ interface PublicStats {
 
 async function getPublicStats(): Promise<PublicStats | null> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    // For SSR, we need to build the full URL. In production, this will use the actual domain
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000';
     const response = await fetch(`${baseUrl}/api/stats/public`, {
       next: { revalidate: 300 }, // Cache for 5 minutes
     });
@@ -105,7 +108,10 @@ export default async function HomePage() {
             name: 'DV4 Links',
             description:
               'Free URL shortener with built-in analytics and custom codes',
-            url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+            url:
+              typeof window !== 'undefined'
+                ? window.location.origin
+                : 'https://dv4.dev',
             applicationCategory: 'WebApplication',
             operatingSystem: 'Any',
             offers: {

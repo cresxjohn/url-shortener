@@ -38,11 +38,10 @@ export async function POST(request: NextRequest) {
     user.resetTokenExpiry = new Date(Date.now() + expiryMs);
     await user.save();
 
-    // Build reset URL from env or request origin (never default to localhost in prod)
-    const envAppUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, '');
-    const origin = envAppUrl || request.nextUrl.origin;
+    // Use request origin to build reset URL
+    const origin = request.nextUrl.origin;
     const resetUrl = `${origin}/reset-password?token=${encodeURIComponent(resetToken)}`;
-    await sendPasswordResetEmail(normalizedEmail, resetUrl);
+    await sendPasswordResetEmail(normalizedEmail, resetUrl, origin);
 
     // Note: Do not expose devResetUrl in real production responses.
     return NextResponse.json(
